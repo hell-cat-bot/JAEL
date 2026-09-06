@@ -1,4 +1,4 @@
-# JA·LE — Catch fraud ring before it is finished forming.
+# JA·LE — Catch a fraud ring before it is finished forming.
 
 Built for the **TVS Credit E.P.I.C 8.0 IT Challenge, Problem (e) — Swarm
 Intelligence Lending Network**: an AI-driven collective-intelligence platform
