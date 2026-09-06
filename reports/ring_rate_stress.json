@@ -1,0 +1,77 @@
+{
+ "prevalence": [
+  {
+   "ring_fraction": 0.01,
+   "cam_factor": 1.0,
+   "n_apps": 3377,
+   "n_pos": 58,
+   "n_rings": 3,
+   "auc_pr": 0.2984,
+   "lift_pr": 17.4,
+   "recall_at_5pct": 0.448
+  },
+  {
+   "ring_fraction": 0.02,
+   "cam_factor": 1.0,
+   "n_apps": 3419,
+   "n_pos": 92,
+   "n_rings": 7,
+   "auc_pr": 0.697,
+   "lift_pr": 25.9,
+   "recall_at_5pct": 0.772
+  },
+  {
+   "ring_fraction": 0.03,
+   "cam_factor": 1.0,
+   "n_apps": 3474,
+   "n_pos": 131,
+   "n_rings": 10,
+   "auc_pr": 0.7289,
+   "lift_pr": 19.3,
+   "recall_at_5pct": 0.725
+  },
+  {
+   "ring_fraction": 0.045,
+   "cam_factor": 1.0,
+   "n_apps": 3558,
+   "n_pos": 199,
+   "n_rings": 16,
+   "auc_pr": 0.7474,
+   "lift_pr": 13.4,
+   "recall_at_5pct": 0.613
+  }
+ ],
+ "camouflage": [
+  {
+   "ring_fraction": 0.03,
+   "cam_factor": 1.5,
+   "n_apps": 3540,
+   "n_pos": 167,
+   "n_rings": 12,
+   "auc_pr": 0.6584,
+   "lift_pr": 14.0,
+   "recall_at_5pct": 0.611
+  },
+  {
+   "ring_fraction": 0.03,
+   "cam_factor": 2.0,
+   "n_apps": 3584,
+   "n_pos": 194,
+   "n_rings": 11,
+   "auc_pr": 0.7057,
+   "lift_pr": 13.0,
+   "recall_at_5pct": 0.639
+  }
+ ],
+ "reading": {
+  "prevalence_range": [
+   0.2984,
+   0.7474
+  ],
+  "camouflage_range": [
+   0.7289,
+   0.7057
+  ],
+  "note": "AUC-PR band across a 4.5x prevalence range and x2 camouflage -> the headline number is not an artifact of an easy operating point. Small-prevalence cells are noisier (few positives); the sweep is a sensitivity bound, not a CI."
+ }
+}

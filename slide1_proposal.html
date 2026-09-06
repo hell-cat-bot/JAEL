@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JA·LE — Slide 1: Problem Context & Lending Journey Matrix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --tvs-navy: #002B49;
+    --tvs-blue: #004C87;
+    --tvs-blue-light: #EBF3FA;
+    --tvs-blue-border: #BCD5EB;
+    
+    --tvs-green: #00875A;
+    --tvs-green-dark: #006644;
+    --tvs-green-light: #E3FCEF;
+    --tvs-green-border: #ABF5D1;
+    
+    --alert-red: #DE350B;
+    --alert-red-light: #FFEBE6;
+    --alert-red-border: #FFBDAD;
+    
+    --warn-amber: #B76E00;
+    --warn-amber-light: #FFF0B3;
+    --warn-amber-border: #FFE380;
+    
+    --bg: #FFFFFF;
+    --card-bg: #FFFFFF;
+    --border: #DFE1E6;
+    --border-subtle: #EBECF0;
+    
+    --ink: #172B4D;
+    --ink-soft: #344563;
+    --muted: #5E6C84;
+    --faint: #7A869A;
+    
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1920px;
+    height: 1080px;
+    background: #FFFFFF;
+    color: var(--ink);
+    font-family: var(--font-sans);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 32px 20px;
+  }
+
+  /* HEADER BANNER */
+  .slide-header {
+    background: linear-gradient(90deg, #00875A 0%, #004C87 100%);
+    color: #FFFFFF;
+    padding: 14px 24px;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  }
+  .header-left h1 {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  .header-left p {
+    font-size: 13px;
+    color: #E3FCEF;
+    margin-top: 2px;
+    font-weight: 500;
+  }
+  .header-right {
+    text-align: right;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .tvs-badge {
+    background: #FFFFFF;
+    color: var(--tvs-navy);
+    font-weight: 800;
+    font-size: 15px;
+    padding: 6px 14px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+  }
+  .submit-by {
+    font-size: 11px;
+    color: #E3FCEF;
+    font-weight: 500;
+  }
+
+  /* TOP CONTEXT ROW (3 CARDS) */
+  .top-row {
+    display: grid;
+    grid-template-columns: 1.15fr 1.25fr 1fr;
+    gap: 16px;
+    margin: 16px 0 14px;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+    box-shadow: 0 1px 3px rgba(9,30,66,0.06);
+  }
+  .card-head {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--tvs-navy);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-bottom: 2px solid var(--tvs-blue);
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .card-head span {
+    font-size: 10.5px;
+    font-family: var(--font-mono);
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  /* Market Context visuals */
+  .market-box {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 4px;
+  }
+  .macro-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    height: 82px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--border);
+  }
+  .bar-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 3px;
+  }
+  .bar-col .b-val {
+    font-size: 10.5px;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    white-space: nowrap;
+  }
+  .bar-col .bar {
+    width: 32px;
+    border-radius: 3px 3px 0 0;
+  }
+  .bar-col .b-lbl {
+    font-size: 9.5px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  /* Trends Grid */
+  .trends-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .trend-item {
+    background: var(--tvs-blue-light);
+    border: 1px solid var(--tvs-blue-border);
+    border-radius: 4px;
+    padding: 8px;
+    text-align: center;
+  }
+  .trend-item.green-tone {
+    background: var(--tvs-green-light);
+    border-color: var(--tvs-green-border);
+  }
+  .trend-val {
+    font-size: 19px;
+    font-weight: 800;
+    font-family: var(--font-mono);
+    color: var(--tvs-blue);
+    line-height: 1.1;
+  }
+  .trend-item.green-tone .trend-val {
+    color: var(--tvs-green-dark);
+  }
+  .trend-lbl {
+    font-size: 9.5px;
+    color: var(--ink-soft);
+    margin-top: 4px;
+    line-height: 1.25;
+    font-weight: 600;
+  }
+
+  /* Underserved / Ring Vulnerability Items */
+  .vuln-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 12px;
+  }
+  .vuln-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 11px;
+    line-height: 1.3;
+    color: var(--ink-soft);
+  }
+  .vuln-item span.bullet {
+    color: var(--alert-red);
+    font-weight: 800;
+  }
+
+  /* LENDING JOURNEY MATRIX */
+  .matrix-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(9,30,66,0.06);
+    overflow: hidden;
+  }
+  table.journey-table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  table.journey-table th {
+    background: var(--tvs-navy);
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 10px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.15);
+  }
+  table.journey-table th .stage-num {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: var(--tvs-green);
+    color: #FFFFFF;
+    border-radius: 50%;
+    font-size: 10.5px;
+    line-height: 18px;
+    margin-right: 4px;
+  }
+  table.journey-table td {
+    padding: 9px 10px;
+    border: 1px solid var(--border-subtle);
+    vertical-align: top;
+    font-size: 10.5px;
+    line-height: 1.35;
+  }
+  table.journey-table td.row-header {
+    background: var(--tvs-blue-light);
+    color: var(--tvs-navy);
+    font-weight: 800;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    vertical-align: middle;
+    text-align: center;
+    width: 130px;
+    border-right: 2px solid var(--tvs-blue);
+  }
+
+  /* PROPOSED SOLUTIONS HIGHLIGHT (Green Dotted Winner Frame) */
+  tr.proposed-row td {
+    background: #F0FDF4;
+    border-top: 2px dashed var(--tvs-green);
+    border-bottom: 2px dashed var(--tvs-green);
+  }
+  tr.proposed-row td.row-header {
+    background: var(--tvs-green-light);
+    color: var(--tvs-green-dark);
+    border-top: 2px dashed var(--tvs-green);
+    border-bottom: 2px dashed var(--tvs-green);
+    border-right: 2px solid var(--tvs-green);
+  }
+  .solution-title {
+    font-weight: 700;
+    color: var(--tvs-green-dark);
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+  }
+
+  .pain-title {
+    font-weight: 700;
+    color: var(--alert-red);
+    margin-bottom: 2px;
+  }
+  .curr-title {
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin-bottom: 2px;
+  }
+
+  /* METRICS ROW AT BOTTOM */
+  .metrics-cell {
+    text-align: center;
+    background: #FAFBFC;
+    font-weight: 600;
+    color: var(--tvs-blue);
+    font-size: 10.5px;
+  }
+  .metrics-cell b {
+    display: block;
+    font-size: 12.5px;
+    font-family: var(--font-mono);
+    color: var(--tvs-navy);
+  }
+
+  .footer-sub {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>
+</head>
+<body>
+
+  <!-- SLIDE 1 HEADER -->
+  <div class="slide-header">
+    <div class="header-left">
+      <h1>Protecting TVS Credit's Retail Book from Emerging Fraud Ecosystems</h1>
+      <p>From Reactive Default-Detection to Causal Pre-Emption — Swarm Intelligence for Dealer-Sourced Lending</p>
+    </div>
+    <div class="header-right">
+      <div>
+        <div class="tvs-badge">TVS CREDIT</div>
+        <div class="submit-by">EPIC 8.0 · Problem (E)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOP CONTEXT ROW (3 CARDS) -->
+  <div class="top-row">
+    
+    <!-- CARD 1: MARKET CONTEXT -->
+    <div class="card">
+      <div class="card-head">
+        <span>Macro Fraud Reality</span>
+        <span>RBI AR 2025-26</span>
+      </div>
+      <div class="market-box">
+        <div class="macro-chart">
+          <div class="bar-col">
+            <span class="b-val" style="color:var(--tvs-navy)">₹40,774 Cr</span>
+            <div class="bar" style="height:48px;background:var(--tvs-navy)"></div>
+            <span class="b-lbl">Advances (85%)</span>
+          </div>
+          <div class="bar-col">
+            <span class="b-val" style="color:var(--alert-red)">₹29 Cr</span>
+            <div class="bar" style="height:3px;background:var(--alert-red)"></div>
+            <span class="b-lbl">Card / Web</span>
+          </div>
+        </div>
+        <div style="font-size:11.5px;line-height:1.4">
+          <b style="color:var(--tvs-navy)">The real war is lending fraud, not payments.</b><br>
+          Average fraud per case escalated <b style="color:var(--alert-red)">+118% in 2 years</b> (₹2.17 Cr → ₹4.72 Cr/case). Fraudsters are consolidating into larger, multi-lender syndicates.
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 2: KEY LENDING & DEALER TRENDS -->
+    <div class="card">
+      <div class="card-head">
+        <span>TVS Credit Anchors</span>
+        <span>FY26 Note 18 Audited</span>
+      </div>
+      <div class="trends-grid">
+        <div class="trend-item">
+          <div class="trend-val">₹19,029 Cr</div>
+          <div class="trend-lbl">Dealer-Sourced Target Book (2W+CD)</div>
+        </div>
+        <div class="trend-item">
+          <div class="trend-val">₹437 Cr</div>
+          <div class="trend-lbl">Annual Bad Debt Write-Offs (1.44%)</div>
+        </div>
+        <div class="trend-item green-tone">
+          <div class="trend-val">0.23%</div>
+          <div class="trend-lbl">Dealer Advance NPA (Dealers Repay!)</div>
+        </div>
+        <div class="trend-item green-tone">
+          <div class="trend-val">₹913 Cr</div>
+          <div class="trend-lbl">TVS Profit After Tax (+19% YoY)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 3: VULNERABILITIES IN DEALER-SOURCED RETAIL -->
+    <div class="card">
+      <div class="card-head">
+        <span>Syndicate Attack Vectors</span>
+        <span>Tier-3/4 Blind Spots</span>
+      </div>
+      <div class="vuln-grid">
+        <div class="vuln-item"><span class="bullet">✖</span> Straw buyers & synthetic identities with fabricated papers.</div>
+        <div class="vuln-item"><span class="bullet">✖</span> Video-KYC network blind spots in remote rural branches.</div>
+        <div class="vuln-item"><span class="bullet">✖</span> Rotating guarantor pools concealing high exposure.</div>
+        <div class="vuln-item"><span class="bullet">✖</span> Shared phone device farms keying multiple DSR loans.</div>
+        <div class="vuln-item"><span class="bullet">✖</span> Channel-blame trap: punishing honest rural dealers.</div>
+        <div class="vuln-item"><span class="bullet">✖</span> Synchronized burst defaults after all loans disburse.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MAIN LENDING FRAUD JOURNEY & PROPOSED SOLUTION MATRIX -->
+  <div class="matrix-wrap">
+    <table class="journey-table">
+      <thead>
+        <tr>
+          <th style="width:130px">Framework</th>
+          <th><span class="stage-num">1</span> Straw Recruitment</th>
+          <th><span class="stage-num">2</span> DSR Portal Entry</th>
+          <th><span class="stage-num">3</span> KYC & Verification</th>
+          <th><span class="stage-num">4</span> Underwriting & Graph Link</th>
+          <th><span class="stage-num">5</span> Pre-Disbursal Early Radar</th>
+          <th><span class="stage-num">6</span> Disbursal & Ring Vaccine</th>
+          <th><span class="stage-num">7</span> Portfolio & Fairness Audit</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <!-- ROW 1: PAIN POINTS -->
+        <tr>
+          <td class="row-header">Pain Points</td>
+          <td><div class="pain-title">Identity Fabrication</div>Unchecked recruitment of local straw villagers & ghost borrowers.</td>
+          <td><div class="pain-title">Point-of-Sale Collusion</div>DSR portal blind to identical devices keying diverse customer loans.</td>
+          <td><div class="pain-title">Connectivity Blindspots</div>Rural video-KYC failover allows manipulated credentials.</td>
+          <td><div class="pain-title">Siloed File Checks</div>Tabular credit models evaluate loans in isolation (AUCPR 0.243).</td>
+          <td><div class="pain-title">Post-Mortem Trap</div>Rings detected months after default, funds long vanished.</td>
+          <td><div class="pain-title">Blunt Blanket Bans</div>Auto-freezing dealers burns volume & hurts 142 honest borrowers.</td>
+          <td><div class="pain-title">Credit Drag</div>High default drag throttles tractor & PL lending in Tier-3/4.</td>
+        </tr>
+
+        <!-- ROW 2: TVS CURRENT INITIATIVES -->
+        <tr>
+          <td class="row-header">TVS Credit Initiatives</td>
+          <td><div class="curr-title">Bureau Scoring</div>CIBIL/CRIF pull on primary borrower records.</td>
+          <td><div class="curr-title">Dealer Portal</div>Sales representative portal login controls.</td>
+          <td><div class="curr-title">Video-KYC & OCR</div>Digital Aadhaar/PAN OCR document scanning.</td>
+          <td><div class="curr-title">Rule Scorecards</div>Product-level risk rules & 2-minute approval filters.</td>
+          <td><div class="curr-title">NPA Collections</div>Tele-calling & agency field collection repossession.</td>
+          <td><div class="curr-title">Dealer Advance Caps</div>Credit limits on dealer trade advances.</td>
+          <td><div class="curr-title">Segment Throttling</div>Restricting disbursals in high-risk categories (FY25).</td>
+        </tr>
+
+        <!-- ROW 3: PROPOSED JA·LE INTERVENTIONS (HIGHLIGHTED WITH TVS GREEN FRAME) -->
+        <tr class="proposed-row">
+          <td class="row-header">JA·LE Proposed Solutions</td>
+          <td>
+            <div class="solution-title">★ L1: Probabilistic ER</div>
+            Fellegi-Sunter identity linker resolves typos & aliases; avoids false auto-rejection.
+          </td>
+          <td>
+            <div class="solution-title">★ L2: Hetero Graph</div>
+            Real-time multi-relational graph: 5 edges (Device, Account, Person, Guarantor, Dealer).
+          </td>
+          <td>
+            <div class="solution-title">★ L3: 86 Graph Features</div>
+            LightGBM boosted trees capture multi-hop link signals; <b>0.754 AUCPR (20× lift)</b>.
+          </td>
+          <td>
+            <div class="solution-title">★ L4: Ring-Level Score</div>
+            Cluster-level formula flags forming syndicates without learned label bias.
+          </td>
+          <td>
+            <div class="solution-title">★ Pre-Emption Radar</div>
+            <b>Median 204-day lead time</b> (~7 mo early warning) with <b>zero false alarms</b>.
+          </td>
+          <td>
+            <div class="solution-title">★ Ring-Vaccination</div>
+            Surgical firebreak: cut shared account (−0.22) & device (−0.21); dealer untouched!
+          </td>
+          <td>
+            <div class="solution-title">★ Growth Unlock</div>
+            De-risks portfolio; safely unlocks ₹9,081 Cr throttled tractor & personal book.
+          </td>
+        </tr>
+
+        <!-- ROW 4: SUCCESS METRICS -->
+        <tr>
+          <td class="row-header">Success Metrics</td>
+          <td class="metrics-cell"><b>0.99 Posterior</b>Linkage Accuracy</td>
+          <td class="metrics-cell"><b>5 Entity Layers</b>Zero Edge Leakage</td>
+          <td class="metrics-cell"><b>0.754 vs 0.243</b>Tripled Risk Power</td>
+          <td class="metrics-cell"><b>83% Fraud</b>Clusters Captured</td>
+          <td class="metrics-cell"><b>204 Days Lead</b>0 False Alarms / Wk</td>
+          <td class="metrics-cell"><b>100% Dealer Vol</b>Preserved (0.23% NPA)</td>
+          <td class="metrics-cell"><b>+₹18.1 Cr / Yr</b>Net Recurring Profit</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FOOTER AUDIT LINE -->
+  <div class="footer-sub">
+    <span><b>JA·LE Architecture:</b> 5-Layer Causal Early-Warning Engine · Pure CPU Execution (30s SMOKE Rerun) · Zero GPU Cost</span>
+    <span>Audited Anchors: TVS Credit AR FY26 Note 18 (pp. 136–137) · RBI AR FY26 (Lending Fraud ₹40,774 Cr)</span>
+  </div>
+
+</body>
+</html>

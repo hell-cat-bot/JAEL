@@ -1,0 +1,232 @@
+<title>JA·LE Technical Brief</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --ground:#f4f5f3; --surface:#ffffff; --surface-2:#ecefec;
+  --ink:#1a1e1c; --ink-soft:#39413b; --muted:#69716a; --faint:#98a09a;
+  --line:#dee2de; --line-strong:#c8cec8;
+  --accent:#8f6329; --accent-soft:#efe4d0;
+  --low:#3f8f78; --mid:#c2913c; --high:#b1402c;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0d1013; --surface:#161a1e; --surface-2:#1f252a;
+    --ink:#e7eae6; --ink-soft:#c3c9c3; --muted:#8b938b; --faint:#616961;
+    --line:#262c31; --line-strong:#353c41;
+    --accent:#cd9a58; --accent-soft:#392d1c;
+    --low:#4bab90; --mid:#d6a750; --high:#d1553e;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0d1013; --surface:#161a1e; --surface-2:#1f252a;
+  --ink:#e7eae6; --ink-soft:#c3c9c3; --muted:#8b938b; --faint:#616961;
+  --line:#262c31; --line-strong:#353c41;
+  --accent:#cd9a58; --accent-soft:#392d1c;
+  --low:#4bab90; --mid:#d6a750; --high:#d1553e;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--ground); color:var(--ink); font-family:var(--sans);
+  font-size:15.5px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  font-variant-numeric:tabular-nums;
+}
+.wrap{max-width:760px; margin:0 auto; padding:56px 24px 96px}
+h1,h2,h3{font-weight:600; letter-spacing:-.017em; text-wrap:balance; line-height:1.25}
+h1{font-size:31px; margin:0 0 10px}
+h2{font-size:20px; margin:52px 0 12px; padding-top:20px; border-top:1px solid var(--line)}
+h2 .n{font-family:var(--mono); font-size:13px; color:var(--accent); font-weight:500; margin-right:10px}
+h3{font-size:15.5px; margin:26px 0 6px}
+p{margin:0 0 14px; max-width:66ch}
+a{color:var(--accent); text-underline-offset:2px}
+strong{font-weight:600}
+code,.mono{font-family:var(--mono); font-size:.9em}
+code{background:var(--surface-2); padding:1px 5px; border-radius:4px}
+ul,ol{margin:0 0 14px; padding-left:22px; max-width:66ch}
+li{margin:5px 0}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px}
+
+.lede{font-size:18px; color:var(--ink-soft); max-width:60ch; margin:0 0 22px}
+.eyebrow{font-size:11px; text-transform:uppercase; letter-spacing:.17em; color:var(--accent); font-weight:600; margin-bottom:14px}
+
+.headline-num{
+  display:flex; gap:22px; flex-wrap:wrap; margin:22px 0 8px;
+  padding:18px 20px; background:var(--surface); border:1px solid var(--line); border-radius:9px;
+}
+.headline-num div{flex:1; min-width:150px}
+.headline-num .v{font-family:var(--mono); font-size:23px; font-weight:600; letter-spacing:-.02em}
+.headline-num .l{font-size:12.5px; color:var(--muted); margin-top:2px}
+
+.callout{
+  border-left:3px solid var(--accent); background:var(--surface-2);
+  padding:12px 16px; border-radius:0 8px 8px 0; margin:16px 0; font-size:14.5px;
+}
+.callout p:last-child{margin-bottom:0}
+
+.tablewrap{overflow-x:auto; margin:16px 0; border:1px solid var(--line); border-radius:9px}
+table{width:100%; border-collapse:collapse; font-size:13.5px}
+th,td{text-align:left; padding:9px 13px; border-bottom:1px solid var(--line); white-space:nowrap}
+th{font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); font-weight:600; background:var(--surface)}
+tbody tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right; font-family:var(--mono)}
+tr.em td{font-weight:600; background:var(--accent-soft)}
+.pill{display:inline-block; font-size:11px; font-weight:600; padding:1px 7px; border-radius:5px}
+.pill.k{background:var(--surface-2); color:var(--muted)}
+
+.pipe{display:flex; flex-direction:column; gap:2px; margin:18px 0}
+.pipe .step{display:grid; grid-template-columns:44px 1fr; gap:14px; padding:12px 0; border-bottom:1px solid var(--line)}
+.pipe .step:last-child{border-bottom:0}
+.pipe .tag{font-family:var(--mono); font-weight:600; color:var(--accent); font-size:14px}
+.pipe .step h3{margin:0 0 3px}
+.pipe .step p{margin:0; font-size:14px; color:var(--ink-soft)}
+
+.foot{margin-top:60px; padding-top:18px; border-top:1px solid var(--line); font-size:12.5px; color:var(--faint); max-width:70ch}
+.btnrow{display:flex; gap:10px; flex-wrap:wrap; margin:20px 0 4px}
+.btn{
+  display:inline-block; padding:9px 16px; border-radius:7px; font-size:13.5px; font-weight:600;
+  background:var(--accent); color:#fff; border:1px solid var(--accent);
+}
+:root[data-theme="dark"] .btn, :root:not([data-theme="light"]) .btn{color:#161a1e}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .btn{color:#161a1e} }
+.btn.ghost{background:transparent; color:var(--accent)}
+.themebtn{position:fixed; top:14px; right:14px; background:var(--surface); border:1px solid var(--line-strong); color:var(--muted); border-radius:7px; padding:6px 10px; font:inherit; font-size:12px; cursor:pointer}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<button class="themebtn" id="themebtn">theme</button>
+
+<div class="wrap">
+
+<div class="eyebrow">TVS Credit E.P.I.C 8.0 · Problem (e)</div>
+<h1>JA·LE — detecting organised lending-fraud rings as a graph problem</h1>
+<p class="lede">A fraud ring files a dozen loan applications that each look ordinary. The signal is not in any application — it is <em>between</em> them: the shared device, the two disbursement accounts, the three guarantors. So we build a graph over lending entities and score the neighbourhood.</p>
+
+<div class="headline-num">
+  <div><div class="v">72%</div><div class="l">of fraud caught in the top 5% of the risk queue (92 of 131)</div></div>
+  <div><div class="v">19×</div><div class="l">lift over reviewing applications at random</div></div>
+  <div><div class="v">0</div><div class="l">ring labels needed on day one — cold-start mode</div></div>
+</div>
+
+<div class="btnrow">
+  <a class="btn" href="https://claude.ai/code/artifact/a62dc0cf-bf2a-4d96-b4ef-8112cf347296">Open the working prototype →</a>
+</div>
+
+<h2><span class="n">01</span>The reframe</h2>
+<p>“Swarm Intelligence” in computer science means optimisation metaheuristics — ant-colony, particle-swarm. That is not what this problem is. The problem statement asks to identify “hidden relationships across loan applications, device fingerprints, dealer networks, bank accounts, mobile numbers, locations, guarantors and payment behaviours” to “predict emerging fraud ecosystems.” That is <strong>coordinated collective behaviour over a network</strong> — a graph problem, specifically community and anomaly detection on a heterogeneous graph. Every design decision below follows from reading the problem that way.</p>
+
+<h2><span class="n">02</span>The system</h2>
+<p>Five layers. The first three use <strong>no labels at all</strong>; the graph, the folds and every feature are unsupervised. Only L3's ranker and L4's corroboration term touch the fraud label, and they never see it during evaluation splitting.</p>
+
+<div class="pipe">
+  <div class="step"><span class="tag">L1</span><div>
+    <h3>Entity resolution</h3>
+    <p>Fellegi–Sunter probabilistic record linkage with EM-estimated match weights. The acceptance threshold is <em>derived</em> from the fitted mixture (<code>log(π/(1−π)) + log(p/(1−p))</code>, p = 0.99), not tuned. A false merge welds two strangers into a fabricated ring, so the operating point deliberately favours precision over recall.</p>
+  </div></div>
+  <div class="step"><span class="tag">L2</span><div>
+    <h3>Heterogeneous graph</h3>
+    <p>Five relations — device, disbursement account, applicant identity, guarantor, dealer — as sparse incidence matrices. Application-to-application affinity is the projection over shared entities. Scales linearly in shared-entity incidences, not quadratically.</p>
+  </div></div>
+  <div class="step"><span class="tag">L3</span><div>
+    <h3>Application scoring</h3>
+    <p>86 features: 11 tabular, 75 relational (co-occurrence counts, burst timing, neighbour-attribute homogeneity, identity entropy on shared nodes, component size, PageRank). Gradient-boosted trees, scored out-of-fold under ring-disjoint cross-validation.</p>
+  </div></div>
+  <div class="step"><span class="tag">L4</span><div>
+    <h3>Ring-level scoring</h3>
+    <p>Score the operation, not the applicant. Candidate clusters come from connected components; the ring score is a <strong>fixed structural formula</strong> — maximum concentration across device / account / identity / guarantor axes, blended with how much the L3 model already backs the cluster. No learned weights, so it cannot overfit the five synthetic typologies.</p>
+  </div></div>
+  <div class="step"><span class="tag">L5</span><div>
+    <h3>Explanation</h3>
+    <p>Every flag reduces to a case note an investigator can check against the file: which device, shared with how many applications, filed how fast; which guarantor, backing how many loans; which ring, reading as which typology.</p>
+  </div></div>
+</div>
+
+<h2><span class="n">03</span>Evidence</h2>
+<p>Synthetic portfolio: 3,474 applications, 131 fraud (3.77% base rate), 10 injected rings across 5 typologies. Ring-disjoint 5-fold CV — every application sharing a device, account, identity or guarantor with another is forced into the same fold, so a ring is never split between train and test.</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Model / check</th><th class="num">AUC-PR</th><th class="num">Lift</th><th class="num">Recall@5%</th></tr></thead>
+<tbody>
+<tr><td><code>n_guarantors</code> alone, raw (the floor)</td><td class="num">0.233</td><td class="num">6.2×</td><td class="num">—</td></tr>
+<tr><td>Node-only gradient boosting</td><td class="num">0.242</td><td class="num">6.4×</td><td class="num">0.22</td></tr>
+<tr><td>Graph-only gradient boosting</td><td class="num">0.732</td><td class="num">19.4×</td><td class="num">0.74</td></tr>
+<tr class="em"><td>Node + graph (headline)</td><td class="num">0.729</td><td class="num">19.3×</td><td class="num">0.73</td></tr>
+<tr><td>Node + graph, nested CV (selection-bias-free)</td><td class="num">0.700</td><td class="num">18.6×</td><td class="num">0.71</td></tr>
+</tbody>
+</table></div>
+
+<p>Node features add nothing measurable once the neighbourhood is described — graph-only matches node+graph. The fraud is entirely in the structure.</p>
+
+<h3>Every flattering version was measured and given up</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Audit</th><th class="num">Result</th><th>Reading</th></tr></thead>
+<tbody>
+<tr><td>Random split vs ring-disjoint</td><td class="num">0.854 → 0.729</td><td>ring leakage into a naïve eval is worth +0.125 — we report the lower number</td></tr>
+<tr><td>Hyperparameters tuned on the eval folds</td><td class="num">+0.03</td><td>removed with nested CV</td></tr>
+<tr><td>Shuffled-label control</td><td class="num">0.035 vs 0.038 base</td><td>at chance — no leak through folds or features</td></tr>
+<tr><td>Entity resolution in the path</td><td class="num">0.729 → 0.648</td><td>−0.08 is the honest cost of not having a perfect identity column (34 false merges)</td></tr>
+<tr><td>Best single feature floor</td><td class="num">0.233</td><td>the model is measured against this, not against zero</td></tr>
+</tbody>
+</table></div>
+
+<h3>L4 ring scoring</h3>
+<p>At ring score ≥ 0.50: <strong>all 12 real rings flagged</strong>, covering 83% of fraud applications. 23 false-positive clusters, median 6 applications each — repeat-guarantor families and shared household devices, cheap for an analyst to clear. Escalating the top 3 rings alone flags 13 applications and catches 12 frauds.</p>
+
+<h3>Cold start — the day-one answer</h3>
+<p>No trained model. An investigator confirms 3 / 5 / 10 cases; personalised PageRank over the shared-entity graph reaches AUC-PR 0.21 / 0.26 / 0.29 (vs 0.038 base), averaged over 20 random seed draws with seeds held out of scoring. In the worked example, 3 confirmed cases surface 16 more real frauds in the graph's top 25.</p>
+
+<h2><span class="n">04</span>What we do not claim</h2>
+<p>The submission rubric weights critical thinking. These are the limits, stated plainly.</p>
+<ul>
+  <li><strong>The data is self-generated.</strong> We wrote the generator, so we chose the fraud mechanism. Everything above establishes internal validity, not real-world performance. We found one unintended tell (<code>n_guarantors</code>, intrinsic to the guarantor-star typology) by accident — the reasonable assumption is that others exist.</li>
+  <li><strong>Cross-typology generalisation is weak.</strong> Train on four typologies, test on the fifth: mean AUC-PR ≈ 0.28 against ≈ 0.73 in-distribution, worst on device-farm (0.05) and dealer-collusion (0.09). The feature model learns the five signatures it was shown, not “what a ring is.” This is the reason L4 scores structure, not learned weights — and it stays in every version of this document.</li>
+  <li><strong>Our synthetic rings are more separable than real ones.</strong> The 0.125 random-vs-ring-disjoint gap says the rings are too cohesive. Real rings are messier.</li>
+  <li><strong>131 positives is a small number.</strong> The 95% bootstrap interval on the headline is roughly ±0.06; point estimates are softer than they look.</li>
+  <li><strong>No temporal validation yet.</strong> Production is walk-forward — train on the past, score the future. Our folds are honest about rings, silent about drift.</li>
+</ul>
+<p>The one check that would settle whether this detects real Indian lending fraud is TVS's own labelled cases. Nothing public substitutes. The next-best step — injecting known rings into a real financial graph so the benign background is not ours — is built and ready to run.</p>
+
+<h2><span class="n">05</span>Why this fits TVS</h2>
+<p><strong>The data already exists.</strong> The problem statement's own list — applications, device fingerprints, dealer networks, bank accounts, mobile numbers, locations, guarantors, payment behaviour — is the graph. TVS holds every field: origination, KYC, disbursement and collections systems already record them. What is missing is the graph <em>over</em> those fields and entity resolution across applications — a system to build, not a change to how data is stored. No <code>ring_id</code> column is required anywhere.</p>
+<p><strong>Day one needs no labels.</strong> L1–L3 are unsupervised; cold-start propagation gives a usable triage queue from a handful of confirmed cases. As investigators confirm clusters, those confirmations become training labels and the supervised layer improves — the loop runs on the existing investigations workflow.</p>
+<p>Independent precedent: <strong>DGraph-Fin</strong>, a production graph published by a real consumer lender, whose edges are “user lists another as an emergency contact on a loan application” — structurally the guarantor relation. A real lender built this graph.</p>
+
+<h2><span class="n">06</span>In the code walkthrough, point at</h2>
+<ol>
+  <li><strong>The reframe</strong> — <code>graph/builder.py</code>: five relations, projection not materialisation, dealer deliberately excluded from the fold relations because one dealer touches thousands of unrelated customers.</li>
+  <li><strong>Ring scoring with no learned weights</strong> — <code>demo/l4_rings.py</code>: the score is a written-out formula; read it and there is nothing fitted to the labels.</li>
+  <li><strong>The honesty machinery</strong> — <code>eval/splits.py</code> (ring-disjoint folds, shuffled-label control), <code>eval/metrics.py</code> (<code>best_single_feature</code> runs every execution), <code>experiments/er_in_path.py</code> (entity resolution cost).</li>
+  <li><strong>The published failure</strong> — <code>experiments/typology_generalisation.py</code>: we run it, we report 0.28, we don't hide it.</li>
+</ol>
+
+<h2><span class="n">07</span>Reproduce</h2>
+<p>Pinned environment in <code>requirements.txt</code> (the gradient-boosting fits move ±0.02–0.03 across scikit-learn versions).</p>
+<div class="tablewrap"><table><tbody>
+<tr><td class="mono">pip install -r requirements.txt</td></tr>
+<tr><td class="mono">python scripts/run_v1.py --profile SMOKE</td><td>~30 s · the model table + all audits</td></tr>
+<tr><td class="mono">PYTHONPATH=. python experiments/er_in_path.py</td><td>entity-resolution cost</td></tr>
+<tr><td class="mono">python -m jale.demo.build_demo_data && python -m jale.demo.bundle_demo</td><td>rebuild the prototype</td></tr>
+</tbody></table></div>
+
+<div class="foot">
+Synthetic data — 3,474 applications, 10 injected rings, no real customer records. Rings are injected with known ground truth so detection can be measured against a known answer rather than a guessed one; this establishes internal validity, not deployment performance. Prototype and proposal for the TVS Credit E.P.I.C 8.0 IT Challenge, problem (e).
+</div>
+</div>
+
+<script>
+(function(){
+  var b=document.getElementById("themebtn");
+  b.addEventListener("click",function(){
+    var r=document.documentElement, c=r.getAttribute("data-theme");
+    var n=c==="dark"?"light":c==="light"?"dark":(matchMedia("(prefers-color-scheme:dark)").matches?"light":"dark");
+    r.setAttribute("data-theme",n);
+    try{localStorage.setItem("jale-brief-theme",n)}catch(e){}
+  });
+  try{var t=localStorage.getItem("jale-brief-theme"); if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}
+})();
+</script>

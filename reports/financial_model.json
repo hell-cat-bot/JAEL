@@ -1,0 +1,192 @@
+{
+ "anchors": {
+  "aum": 30639.0,
+  "net_book": 30285.47,
+  "pat": 913.17,
+  "nnpa": 0.0206,
+  "writeoffs": 437.11,
+  "stage3": 758.0,
+  "gross_exposure": 31216.01,
+  "target_book": 19029.23,
+  "target_book_npa": 403.93,
+  "dealer_npa_pct": 0.23
+ },
+ "rbi": {
+  "total": 48021.0,
+  "adv": 40774.0,
+  "adv_cases": 8640,
+  "hist": [
+   [
+    "FY24",
+    8917.0,
+    4105
+   ],
+   [
+    "FY25",
+    30367.0,
+    7924
+   ],
+   [
+    "FY26",
+    40774.0,
+    8640
+   ]
+  ]
+ },
+ "assumptions": {
+  "ring_share": 0.2,
+  "prevention_full": 0.5,
+  "recovery_uplift": 0.1,
+  "ramp": [
+   0.15,
+   0.52,
+   1.0
+  ],
+  "build_y1": 8.0,
+  "opex_ramp": [
+   2.5,
+   3.5,
+   4.5,
+   5.0,
+   5.5
+  ],
+  "change_mgmt_y1": 1.5,
+  "friction_rate": 0.0004,
+  "throttled_book": 9081.5,
+  "unlock_yield_gain": 0.005,
+  "unlock_start_y2": true
+ },
+ "derived": {
+  "credit_cost": 0.014432993775563,
+  "covered_base": 19029.23,
+  "covered_ext": 28110.73,
+  "severity": [
+   [
+    "FY24",
+    2.17
+   ],
+   [
+    "FY25",
+    3.83
+   ],
+   [
+    "FY26",
+    4.72
+   ]
+  ]
+ },
+ "base": [
+  {
+   "year": "Y1",
+   "covered": 2854.0,
+   "avoided": 1.4,
+   "recovered": 0.1,
+   "cost": 13.1,
+   "net": -11.6
+  },
+  {
+   "year": "Y2",
+   "covered": 9895.0,
+   "avoided": 10.0,
+   "recovered": 1.0,
+   "cost": 7.5,
+   "net": 3.5
+  },
+  {
+   "year": "Y3",
+   "covered": 19029.0,
+   "avoided": 27.5,
+   "recovered": 2.7,
+   "cost": 12.1,
+   "net": 18.1
+  },
+  {
+   "year": "Y4",
+   "covered": 28111.0,
+   "avoided": 40.6,
+   "recovered": 4.1,
+   "cost": 16.2,
+   "net": 28.4
+  },
+  {
+   "year": "Y5",
+   "covered": 28111.0,
+   "avoided": 40.6,
+   "recovered": 4.1,
+   "cost": 16.7,
+   "net": 27.9
+  }
+ ],
+ "npv_base": 39.2,
+ "upside": [
+  {
+   "year": "Y1",
+   "covered": 2854.0,
+   "avoided": 1.4,
+   "recovered": 0.1,
+   "cost": 13.1,
+   "net": -11.6,
+   "net_upside": -11.6
+  },
+  {
+   "year": "Y2",
+   "covered": 9895.0,
+   "avoided": 10.0,
+   "recovered": 1.0,
+   "cost": 7.5,
+   "net": 3.5,
+   "net_upside": 7.6
+  },
+  {
+   "year": "Y3",
+   "covered": 19029.0,
+   "avoided": 27.5,
+   "recovered": 2.7,
+   "cost": 12.1,
+   "net": 18.1,
+   "net_upside": 26.3
+  },
+  {
+   "year": "Y4",
+   "covered": 28111.0,
+   "avoided": 40.6,
+   "recovered": 4.1,
+   "cost": 16.2,
+   "net": 28.4,
+   "net_upside": 40.7
+  },
+  {
+   "year": "Y5",
+   "covered": 28111.0,
+   "avoided": 40.6,
+   "recovered": 4.1,
+   "cost": 16.7,
+   "net": 27.9,
+   "net_upside": 41.5
+  }
+ ],
+ "npv_upside": 63.8,
+ "mc": {
+  "net_y1": [
+   -13.4,
+   -11.7,
+   -10.1
+  ],
+  "net_y3": [
+   4.0,
+   13.2,
+   25.6
+  ],
+  "net_y5": [
+   7.1,
+   20.6,
+   38.9
+  ],
+  "npv_pct": [
+   -0.45236722693329184,
+   25.09298998923989,
+   60.516484545793254
+  ],
+  "p_npv_positive": 0.89325
+ }
+}

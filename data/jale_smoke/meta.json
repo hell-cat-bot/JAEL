@@ -1,0 +1,46 @@
+{
+  "profile": {
+    "name": "smoke",
+    "n_persons": 6000,
+    "apps_per_person_lambda": 0.55,
+    "n_dealers": 180,
+    "n_devices_per_person_cap": 2,
+    "fraud_ring_fraction": 0.03,
+    "history_days": 540,
+    "emi_schedule_max_months": 24,
+    "seed": 20260827,
+    "benign": {
+      "household_size_min": 1,
+      "household_size_max": 5,
+      "household_share_device_p": 0.35,
+      "csc_kiosk_probability": 0.14,
+      "csc_apps_per_kiosk": [
+        8,
+        220
+      ],
+      "repeat_guarantor_p": 0.1,
+      "repeat_guarantor_max": 4,
+      "dealer_power_law_exponent": 1.55,
+      "duplicate_record_rate": 0.045,
+      "branch_locality_p": 0.72,
+      "same_pincode_neighbour_p": 0.55
+    },
+    "repayment": {
+      "benign_ever_dpd30_p": 0.22,
+      "benign_first_payment_default_p": 0.04,
+      "dpd_severity_mean": 18.0,
+      "seasonality_amplitude": 0.3
+    }
+  },
+  "counts": {
+    "persons": 6372,
+    "devices": 6802,
+    "dealers": 180,
+    "accounts": 3450,
+    "applications": 3474,
+    "guarantor_links": 1444,
+    "emi_schedule": 28183,
+    "rings": 10
+  },
+  "labels_segregated": true
+}

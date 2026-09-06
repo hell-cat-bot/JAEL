@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TVS Credit · JA·LE Early-Warning & Linkage Engine</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================= TVS CREDIT CORPORATE DESIGN SYSTEM */
+:root {
+  /* TVS Credit Brand Colors: Deep Corporate Blue & Enterprise Green */
+  --tvs-navy: #002B49;
+  --tvs-blue: #004C87;
+  --tvs-blue-light: #EBF3FA;
+  --tvs-blue-border: #BCD5EB;
+  
+  --tvs-green: #00875A;
+  --tvs-green-dark: #006644;
+  --tvs-green-light: #E3FCEF;
+  --tvs-green-border: #ABF5D1;
+  
+  --alert-red: #DE350B;
+  --alert-red-light: #FFEBE6;
+  --alert-red-border: #FFBDAD;
+  
+  --warn-amber: #FF991F;
+  --warn-amber-light: #FFF0B3;
+  --warn-amber-border: #FFE380;
+  
+  --purple: #6554C0;
+  --purple-light: #EAE6FF;
+  
+  /* Surfaces & Neutrals: Crisp Enterprise White Theme */
+  --bg: #F4F6F8;
+  --surface: #FFFFFF;
+  --surface-alt: #F8FAFC;
+  --surface-hover: #F1F5F9;
+  
+  --border: #DFE1E6;
+  --border-strong: #C1C7D0;
+  --border-subtle: #EBECF0;
+  
+  --ink: #172B4D;
+  --ink-soft: #344563;
+  --muted: #5E6C84;
+  --faint: #7A869A;
+  
+  --shadow-sm: 0 1px 2px rgba(9, 30, 66, 0.08);
+  --shadow-md: 0 4px 12px rgba(9, 30, 66, 0.08);
+  --shadow-lg: 0 8px 24px rgba(9, 30, 66, 0.12);
+  
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 12px;
+  
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================= HEADER */
+.corp-header {
+  background: var(--surface);
+  border-bottom: 2px solid var(--tvs-blue);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.tvs-logo-badge {
+  background: var(--tvs-navy);
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.tvs-logo-badge::after {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--tvs-green);
+  border-radius: 50%;
+}
+.corp-titles {
+  display: flex;
+  flex-direction: column;
+}
+.corp-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--tvs-navy);
+  letter-spacing: -0.01em;
+}
+.corp-sub {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* 3-PAGE ENTERPRISE TABS */
+.nav-tabs {
+  display: flex;
+  background: var(--surface-alt);
+  padding: 3px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  gap: 4px;
+}
+.tab-btn {
+  background: transparent;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  padding: 7px 16px;
+  border-radius: calc(var(--radius) - 2px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+}
+.tab-btn:hover {
+  background: #E2E8F0;
+  color: var(--ink);
+}
+.tab-btn[data-active="true"] {
+  background: var(--tvs-blue);
+  color: #FFFFFF;
+  box-shadow: 0 1px 3px rgba(0, 76, 135, 0.3);
+}
+.tab-btn .tab-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.08);
+}
+.tab-btn[data-active="true"] .tab-badge {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.header-tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-corp {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--ink-soft);
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+.btn-corp:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+  color: var(--ink);
+}
+.btn-corp.primary-green {
+  background: var(--tvs-green);
+  color: white;
+  border-color: var(--tvs-green-dark);
+}
+.btn-corp.primary-green:hover {
+  background: var(--tvs-green-dark);
+}
+
+/* ============================================================= MAIN CONTAINER */
+.main-wrap {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 20px 24px 60px;
+}
+.page-view {
+  display: none;
+}
+.page-view.active {
+  display: block;
+}
+
+/* ============================================================= EXECUTIVE OVERVIEW BAR */
+.overview-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--tvs-blue);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.overview-text h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--tvs-navy);
+  margin-bottom: 4px;
+}
+.overview-text p {
+  font-size: 12.5px;
+  color: var(--muted);
+  max-width: 860px;
+}
+.overview-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.tag-corp {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+}
+.tag-corp.blue {
+  background: var(--tvs-blue-light);
+  color: var(--tvs-blue);
+  border: 1px solid var(--tvs-blue-border);
+}
+.tag-corp.green {
+  background: var(--tvs-green-light);
+  color: var(--tvs-green-dark);
+  border: 1px solid var(--tvs-green-border);
+}
+.tag-corp.amber {
+  background: var(--warn-amber-light);
+  color: #974F00;
+  border: 1px solid var(--warn-amber-border);
+}
+.tag-corp.red {
+  background: var(--alert-red-light);
+  color: var(--alert-red);
+  border: 1px solid var(--alert-red-border);
+}
+
+/* ============================================================= 4 KPI CARDS */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.kpi-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  transition: box-shadow 0.15s ease;
+}
+.kpi-box:hover {
+  box-shadow: var(--shadow-md);
+}
+.kpi-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.kpi-num {
+  font-size: 26px;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: var(--tvs-navy);
+  line-height: 1.1;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.kpi-num .subtext {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.kpi-sub {
+  font-size: 11.5px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* ============================================================= PANELS & TABLES */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.panel-header {
+  padding: 12px 18px;
+  background: var(--surface-alt);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.panel-headline {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--tvs-navy);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.panel-body {
+  padding: 18px;
+}
+
+/* ============================================================= PAGE 1: TIMELINE & RADAR */
+.timeline-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+}
+.timeline-bar-wrap {
+  position: relative;
+  height: 8px;
+  background: var(--border-subtle);
+  border-radius: 4px;
+  margin: 28px 14px 34px;
+}
+.timeline-bar-fill {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  background: linear-gradient(90deg, var(--tvs-green) 0%, var(--tvs-blue) 70%, var(--alert-red) 100%);
+  border-radius: 4px;
+  width: 32%;
+}
+.timeline-pin {
+  position: absolute;
+  top: -6px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 3px solid var(--tvs-blue);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  transform: translateX(-50%);
+}
+.stage-mark {
+  position: absolute;
+  top: 14px;
+  transform: translateX(-50%);
+  font-size: 10.5px;
+  font-family: var(--font-mono);
+  color: var(--muted);
+  text-align: center;
+  white-space: nowrap;
+}
+.stage-mark.alert-trigger {
+  color: var(--alert-red);
+  font-weight: 700;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+table.corp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  text-align: left;
+}
+table.corp-table th {
+  background: var(--surface-alt);
+  padding: 9px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+table.corp-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: middle;
+}
+table.corp-table tbody tr:hover {
+  background: var(--surface-hover);
+  cursor: pointer;
+}
+.cluster-tag {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  padding: 3px 7px;
+  border-radius: var(--radius-sm);
+  font-size: 11.5px;
+}
+.cluster-tag.red { background: var(--alert-red-light); color: var(--alert-red); }
+.cluster-tag.amber { background: var(--warn-amber-light); color: #974F00; }
+
+.mini-bar {
+  height: 6px;
+  background: var(--border-subtle);
+  border-radius: 3px;
+  overflow: hidden;
+  width: 90px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+.mini-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+}
+
+/* ============================================================= PAGE 2: CAUSAL SWARM GRAPH */
+.causal-control-strip {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.causal-buttons {
+  display: flex;
+  gap: 8px;
+}
+.btn-lever {
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 13px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+.btn-lever:hover {
+  background: var(--surface-hover);
+}
+.btn-lever[data-active="true"] {
+  background: var(--alert-red-light);
+  color: var(--alert-red);
+  border-color: var(--alert-red);
+  font-weight: 700;
+}
+.btn-lever.trap[data-active="true"] {
+  background: #FFF0B3;
+  color: #974F00;
+  border-color: #FF991F;
+}
+
+.notice-box {
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.45;
+}
+.notice-box.success {
+  background: var(--tvs-green-light);
+  border: 1px solid var(--tvs-green-border);
+  color: var(--tvs-green-dark);
+}
+.notice-box.danger-trap {
+  background: var(--alert-red-light);
+  border: 1px solid var(--alert-red-border);
+  color: var(--alert-red);
+}
+
+.graph-frame {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  position: relative;
+  height: 520px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.graph-frame canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.graph-key {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 11px;
+  box-shadow: var(--shadow-sm);
+  display: grid;
+  gap: 6px;
+  z-index: 10;
+}
+.key-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.key-circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* ============================================================= PAGE 3: RING-VACCINATION CONSOLE */
+.layout-split {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 18px;
+}
+@media (max-width: 1024px) {
+  .kpi-row { grid-template-columns: repeat(2, 1fr); }
+  .layout-split { grid-template-columns: 1fr; }
+}
+
+.dossier-row {
+  display: grid;
+  grid-template-columns: 130px 1fr 38px;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.dossier-track {
+  height: 6px;
+  background: var(--border-subtle);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.dossier-fill {
+  height: 100%;
+  border-radius: 3px;
+}
+
+.action-row {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  transition: border-color 0.12s ease;
+}
+.action-row.green-rec {
+  border-left: 4px solid var(--tvs-green);
+}
+.action-row.bypassed {
+  border-left: 4px solid var(--border-strong);
+  background: var(--surface-alt);
+}
+.action-meta h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--tvs-navy);
+  margin-bottom: 3px;
+}
+.action-meta p {
+  font-size: 11.5px;
+  color: var(--muted);
+}
+.tag-pills {
+  display: flex;
+  gap: 6px;
+  margin-top: 5px;
+}
+
+.pnl-strip-white {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 14px;
+}
+.pnl-box-white {
+  background: var(--tvs-blue-light);
+  border: 1px solid var(--tvs-blue-border);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  text-align: center;
+}
+.pnl-box-white .pnl-num {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--tvs-blue);
+}
+.pnl-box-white .pnl-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--tvs-navy);
+  margin-top: 2px;
+}
+
+/* ============================================================= FOOTER */
+.corp-footer {
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  padding: 14px 24px;
+  color: var(--muted);
+  font-size: 11.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+</style>
+</head>
+<body>
+
+<!-- CORPORATE TVS CREDIT HEADER -->
+<header class="corp-header">
+  <div class="header-inner">
+    <div class="brand-group">
+      <div class="tvs-logo-badge">TVS CREDIT</div>
+      <div class="corp-titles">
+        <span class="corp-title">JA·LE Risk Intelligence Console</span>
+        <span class="corp-sub">Underwriting & Fraud-Ecosystem Early Warning · E.P.I.C 8.0</span>
+      </div>
+    </div>
+
+    <!-- 3 PROFESSIONAL SCREENS/VIEWS -->
+    <div class="nav-tabs">
+      <button class="tab-btn" data-page="radar" data-active="true" onclick="showTab('radar')">
+        <span class="tab-badge">1</span>
+        <span>Early-Warning Radar</span>
+      </button>
+      <button class="tab-btn" data-page="causal" data-active="false" onclick="showTab('causal')">
+        <span class="tab-badge">2</span>
+        <span>Causal Swarm Graph</span>
+      </button>
+      <button class="tab-btn" data-page="vaccine" data-active="false" onclick="showTab('vaccine')">
+        <span class="tab-badge">3</span>
+        <span>Ring-Vaccination Console</span>
+      </button>
+    </div>
+
+    <div class="header-tools">
+      <button class="btn-corp" onclick="toggleSlideFit()" title="Optimize layout for 16:9 Slide Capture">
+        <span>📸</span> Slide Fit (16:9)
+      </button>
+      <span class="tag-corp green">● Engine Online</span>
+    </div>
+  </div>
+</header>
+
+<main class="main-wrap">
+
+  <!-- ====================================================================== -->
+  <!-- SCREEN 1: EARLY-WARNING FORMATION RADAR                                 -->
+  <!-- ====================================================================== -->
+  <section id="view-radar" class="page-view active">
+    
+    <div class="overview-card">
+      <div class="overview-text">
+        <h2>Screen 1: Early-Warning Formation Radar</h2>
+        <p>Pre-emptive detection of organized lending fraud rings <b>~7 months (204 days) before loan completion</b> — interdicting rings while straw buyers are being recruited and before funds leave TVS Credit accounts.</p>
+      </div>
+      <div class="overview-meta">
+        <span class="tag-corp green">0 False Alarms / Wk</span>
+        <span class="tag-corp blue">20.0× Lift vs Random</span>
+      </div>
+    </div>
+
+    <!-- 4 HERO KPIS -->
+    <div class="kpi-row">
+      <div class="kpi-box">
+        <div class="kpi-header">Median Lead Time <span class="tag-corp blue">PRE-EMPTION</span></div>
+        <div class="kpi-num">204 <span class="subtext">Days</span></div>
+        <div class="kpi-sub">Flags forming rings ~7 months before completion</div>
+      </div>
+      <div class="kpi-box">
+        <div class="kpi-header">Strict Precision <span class="tag-corp green">ZERO NOISE</span></div>
+        <div class="kpi-num">0 <span class="subtext">FP / Wk</span></div>
+        <div class="kpi-sub">Zero false clusters at operating threshold L4 ≥ 0.70</div>
+      </div>
+      <div class="kpi-box">
+        <div class="kpi-header">AUCPR (Ring-Disjoint) <span class="tag-corp green">20.0× LIFT</span></div>
+        <div class="kpi-num">0.754 <span class="subtext">vs 0.243</span></div>
+        <div class="kpi-sub">Graph structure triples tabular underwriting signal</div>
+      </div>
+      <div class="kpi-box">
+        <div class="kpi-header">Audited Savings <span class="tag-corp blue">NOTE 18</span></div>
+        <div class="kpi-num">₹30.2 <span class="subtext">Cr / Yr</span></div>
+        <div class="kpi-sub">Annual recurring net profit: +₹18.1 Cr / year</div>
+      </div>
+    </div>
+
+    <!-- FORMATION TIMELINE SIMULATOR -->
+    <div class="timeline-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <div>
+          <h3 style="font-size:14px;font-weight:700;color:var(--tvs-navy)">Simulated Loan Origination & Ring Formation Timeline</h3>
+          <p style="font-size:12px;color:var(--muted)">Walk-forward tracking: JA·LE identifies coordinated syndicates at Day 112, well ahead of standard default detection at Day 275+.</p>
+        </div>
+        <span style="font-family:var(--font-mono);font-size:14px;font-weight:700;color:var(--tvs-blue)" id="sliderDayText">Day 112 of 365</span>
+      </div>
+
+      <div class="timeline-bar-wrap">
+        <div class="timeline-bar-fill" id="timelineBarFill" style="width: 31%;"></div>
+        <div class="timeline-pin" id="timelinePin" style="left: 31%;"></div>
+        
+        <div class="stage-mark" style="left: 6%;">Day 15<br>Straw KYC</div>
+        <div class="stage-mark" style="left: 18%;">Day 60<br>DSR Entry</div>
+        <div class="stage-mark alert-trigger" style="left: 31%;">Day 112<br><b>⚡ JA·LE ALERT</b><br><span style="color:var(--tvs-green)">(204-Day Lead)</span></div>
+        <div class="stage-mark" style="left: 75%;">Day 275<br><span style="color:var(--alert-red)">Final Disbursal</span><br><span style="color:var(--muted)">(Competitors notice)</span></div>
+        <div class="stage-mark" style="left: 94%;">Day 345<br><span style="color:var(--alert-red)">Default Burst</span></div>
+      </div>
+
+      <div style="margin-top:28px">
+        <input type="range" min="1" max="365" value="112" style="width:100%;cursor:pointer" id="timelineSlider" oninput="changeTimelineDay(this.value)">
+      </div>
+    </div>
+
+    <!-- ACTIVE FORMING RINGS QUEUE -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-headline">Active Forming Fraud Clusters (Lead-Time Queue)</div>
+        <span class="tag-corp blue">TVS Credit Live Portals</span>
+      </div>
+      <div class="table-responsive">
+        <table class="corp-table">
+          <thead>
+            <tr>
+              <th>Cluster ID</th>
+              <th>Ring Risk (L4)</th>
+              <th>Typology Signature</th>
+              <th>Applications Filed</th>
+              <th>Lead-Time Lead</th>
+              <th>Dominant Axis</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="radarTbody">
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ====================================================================== -->
+  <!-- SCREEN 2: CAUSAL SWARM GRAPH & DEALER INNOCENCE                       -->
+  <!-- ====================================================================== -->
+  <section id="view-causal" class="page-view">
+    
+    <div class="overview-card" style="border-left-color:var(--tvs-navy)">
+      <div class="overview-text">
+        <h2>Screen 2: Heterogeneous Swarm Graph & Causal Lever</h2>
+        <p>Scientific proof that <b>dealers are unwitting conduits, not the ringleaders</b>. Cutting bank account (−0.22) and device (−0.21) links causally breaks the ring, while blocking the dealer (−0.10) harms legitimate TVS business.</p>
+      </div>
+      <div class="overview-meta">
+        <span class="tag-corp green">Dealer NPA: 0.23% (Audited)</span>
+      </div>
+    </div>
+
+    <!-- CAUSAL ACTION BAR -->
+    <div class="causal-control-strip">
+      <div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:var(--muted)">Causal Intervention Lever (do-calculus)</div>
+        <div style="font-size:13px;font-weight:700;color:var(--tvs-navy);margin-top:1px">Test: What happens if an underwriter severs specific relationships?</div>
+      </div>
+      <div class="causal-buttons">
+        <button class="btn-lever" id="btnCutAccount" onclick="toggleCausalAction('account')">
+          <span>💳</span> Sever Bank Account Link <b style="color:var(--alert-red);font-family:var(--font-mono)">(−0.22)</b>
+        </button>
+        <button class="btn-lever" id="btnCutDevice" onclick="toggleCausalAction('device')">
+          <span>📱</span> Sever Device Farm Link <b style="color:var(--alert-red);font-family:var(--font-mono)">(−0.21)</b>
+        </button>
+        <button class="btn-lever trap" id="btnCutDealer" onclick="toggleCausalAction('dealer')">
+          <span>🏬</span> Blanket-Block Dealer <b style="color:var(--muted);font-family:var(--font-mono)">(−0.10)</b>
+        </button>
+      </div>
+    </div>
+
+    <!-- DYNAMIC CAUSAL NOTICE -->
+    <div id="causalNotice"></div>
+
+    <!-- CANVAS GRAPH FRAME -->
+    <div class="graph-frame">
+      <div class="graph-key">
+        <div style="font-weight:700;color:var(--tvs-navy);margin-bottom:2px">Entity Graph Legend</div>
+        <div class="key-item"><span class="key-circle" style="background:#DE350B"></span> Straw Loan Applications</div>
+        <div class="key-item"><span class="key-circle" style="background:#00875A"></span> Shared Disbursement Account</div>
+        <div class="key-item"><span class="key-circle" style="background:#004C87"></span> Reused Device (Phone / IMEI)</div>
+        <div class="key-item"><span class="key-circle" style="background:#6554C0"></span> Shared Guarantor Pool</div>
+        <div class="key-item"><span class="key-circle" style="background:#42526E"></span> Rural Dealer (Conduit Showroom)</div>
+      </div>
+      <canvas id="causalCanvas"></canvas>
+    </div>
+
+    <div style="margin-top:10px;display:flex;justify-content:space-between;color:var(--muted);font-size:11.5px">
+      <span>Interactive Graph: Nodes represent applications and shared identifiers in Cluster #5. Click and drag nodes to inspect.</span>
+      <span>Cluster #5 · 8 Applications · ₹38,40,000 Total Syndicate Exposure</span>
+    </div>
+
+  </section>
+
+
+  <!-- ====================================================================== -->
+  <!-- SCREEN 3: RING-VACCINATION CONSOLE & UNDERWRITER CASE-FILE            -->
+  <!-- ====================================================================== -->
+  <section id="view-vaccine" class="page-view">
+    
+    <div class="overview-card" style="border-left-color:var(--tvs-green)">
+      <div class="overview-text">
+        <h2>Screen 3: Ring-Vaccination Console & Underwriter Dossier</h2>
+        <p>Actionable, budget-aware firebreaks for underwriting officers, anchored to <b>TVS Credit FY26 Audited Note 18</b> financials (₹19,029 Cr target book · +₹18.1 Cr/yr net recurring profit).</p>
+      </div>
+      <div class="overview-meta">
+        <span class="tag-corp green">5-Yr NPV: +₹39.2 Cr (4.2× ROI)</span>
+      </div>
+    </div>
+
+    <div class="layout-split">
+      
+      <!-- LEFT: CASE DOSSIER -->
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-headline">Underwriter Case File Dossier</div>
+          <span class="cluster-tag red">Cluster #5</span>
+        </div>
+        <div class="panel-body">
+          
+          <div style="margin-bottom:14px">
+            <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase">Cluster Profile</div>
+            <div style="font-size:16px;font-weight:800;color:var(--tvs-navy);margin-top:2px">Identity Reuse Syndicate</div>
+            <div style="font-size:12px;color:var(--muted)">8 Applicants · 2 Dealers · ₹38,40,000 Total Disbursal Value</div>
+          </div>
+
+          <!-- DOMINANT RISK AXES -->
+          <div style="border-top:1px solid var(--border);padding-top:12px">
+            <div style="font-size:12px;font-weight:700;color:var(--tvs-navy);margin-bottom:8px">Dominant Axis Breakdown</div>
+            
+            <div class="dossier-row">
+              <span>Shared Device</span>
+              <div class="dossier-track"><div class="dossier-fill" style="width:88%;background:var(--tvs-blue)"></div></div>
+              <span style="font-family:var(--font-mono);font-weight:700">0.88</span>
+            </div>
+            <div class="dossier-row">
+              <span>Account Reuse</span>
+              <div class="dossier-track"><div class="dossier-fill" style="width:82%;background:var(--tvs-green)"></div></div>
+              <span style="font-family:var(--font-mono);font-weight:700">0.82</span>
+            </div>
+            <div class="dossier-row">
+              <span>Guarantor Pool</span>
+              <div class="dossier-track"><div class="dossier-fill" style="width:65%;background:var(--purple)"></div></div>
+              <span style="font-family:var(--font-mono);font-weight:700">0.65</span>
+            </div>
+            <div class="dossier-row">
+              <span>Velocity Burst</span>
+              <div class="dossier-track"><div class="dossier-fill" style="width:74%;background:var(--alert-red)"></div></div>
+              <span style="font-family:var(--font-mono);font-weight:700">0.74</span>
+            </div>
+          </div>
+
+          <!-- DPDP COMPLIANCE -->
+          <div style="border-top:1px solid var(--border);margin-top:14px;padding-top:12px">
+            <div style="font-size:11.5px;font-weight:700;color:var(--tvs-green);display:flex;align-items:center;gap:6px">
+              <span>🔒</span> DPDP 2023 Cryptographic Salted Privacy
+            </div>
+            <p style="font-size:11px;color:var(--muted);margin-top:4px">Zero raw Aadhaar, PAN, or phone numbers in graph edges. All entities cryptographically hashed with rotating salts.</p>
+            <div style="font-family:var(--font-mono);font-size:10px;color:var(--faint);margin-top:5px;background:var(--surface-alt);padding:6px;border-radius:3px">
+              Aadhaar: e3b0c442...3f01<br>Phone: 8d969eef...cad3
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT: 1-CLICK FIREBREAKS & FINANCIALS -->
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-headline">Budgeted Ring-Vaccination Actions (Firebreaks)</div>
+          <span class="tag-corp green">Surgical Link Intervention</span>
+        </div>
+        <div class="panel-body">
+          
+          <!-- ACTION 1 -->
+          <div class="action-row green-rec" id="rowAction1">
+            <div class="action-meta">
+              <h4>1. Step-Up Biometric Verification on Reused Device</h4>
+              <p>Mandate biometric KYC verification on 4 pending two-wheeler applications tied to IMEI d8a9...31f0.</p>
+              <div class="tag-pills">
+                <span class="tag-corp green">Friction: Low</span>
+                <span class="tag-corp blue">Cost: ₹150</span>
+                <span class="tag-corp red">Cuts −0.21 Signal</span>
+              </div>
+            </div>
+            <button class="btn-corp primary-green" onclick="triggerFirebreak(1)">Execute Action</button>
+          </div>
+
+          <!-- ACTION 2 -->
+          <div class="action-row green-rec" id="rowAction2">
+            <div class="action-meta">
+              <h4>2. Hold Disbursement on Shared Mule Bank Account</h4>
+              <p>Route payment gate to mandate disbursement directly into primary borrower account only.</p>
+              <div class="tag-pills">
+                <span class="tag-corp green">Friction: Zero</span>
+                <span class="tag-corp blue">Cost: ₹0</span>
+                <span class="tag-corp red">Cuts −0.22 Signal</span>
+              </div>
+            </div>
+            <button class="btn-corp primary-green" onclick="triggerFirebreak(2)">Execute Action</button>
+          </div>
+
+          <!-- ACTION 3 -->
+          <div class="action-row bypassed">
+            <div class="action-meta">
+              <h4>3. Blanket-Block Dealer Showroom (#DLR_3910)</h4>
+              <p>Auto-reject all future loan applications from this dealer showroom.</p>
+              <div class="tag-pills">
+                <span class="tag-corp red">Friction: Severe</span>
+                <span class="tag-corp red">Burns ₹4.2 Cr Revenue</span>
+                <span class="tag-corp amber">Cuts Only −0.10 Signal</span>
+              </div>
+            </div>
+            <button class="btn-corp" style="opacity:0.6;cursor:default">Bypassed (Fairness Safe)</button>
+          </div>
+
+          <!-- AUDITED FINANCIAL METRICS -->
+          <div style="margin-top:16px;border-top:1px solid var(--border);padding-top:14px">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:12.5px;font-weight:700;color:var(--tvs-navy)">Audited TVS Credit Business Return (FY26 Note 18 Anchor)</span>
+              <span class="tag-corp green">P(NPV > 0) = 89%</span>
+            </div>
+
+            <div class="pnl-strip-white">
+              <div class="pnl-box-white">
+                <div class="pnl-num">+₹18.1 Cr</div>
+                <div class="pnl-label">Annual Net Profit at Scale (Y3)</div>
+              </div>
+              <div class="pnl-box-white">
+                <div class="pnl-num">+₹39.2 Cr</div>
+                <div class="pnl-label">5-Year Base Net Present Value</div>
+              </div>
+              <div class="pnl-box-white">
+                <div class="pnl-num">4.2×</div>
+                <div class="pnl-label">Return on Investment (ROI)</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="corp-footer">
+  <div>
+    TVS Credit Services Limited · <b>JA·LE</b> (Joint Application & Linkage Engine) · Self-contained demonstration console
+  </div>
+  <div>
+    Audited Anchor: <b>TVS Credit FY26 Annual Report Note 18</b> (AUM ₹30,639 Cr · Vehicles & CD Book ₹19,029 Cr)
+  </div>
+</footer>
+
+<!-- EMBEDDED DEMO DATA PLACEHOLDER -->
+<script id="jale-data" type="application/json">__DATA__</script>
+
+<script>
+"use strict";
+
+/* ============================================================= DATA PARSING */
+let DATA = {};
+try {
+  const el = document.getElementById("jale-data");
+  if (el && el.textContent.trim() !== "__" + "DATA__") {
+    DATA = JSON.parse(el.textContent);
+  }
+} catch(e) {
+  console.warn("Using fallback demo dataset", e);
+}
+
+if (!DATA.rings || !DATA.rings.length) {
+  DATA = {
+    meta: { n_applications: 3474, n_fraud: 131, base_rate: 0.038, n_rings_injected: 10 },
+    rings: [
+      { cluster_id: 5, ring_score: 0.88, typology_guess: "Identity Reuse Syndicate", n_apps: 9, n_fraud: 8, dominant_axis: "device", lead_days: 218 },
+      { cluster_id: 12, ring_score: 0.84, typology_guess: "Device Farm Multi-Borrower", n_apps: 8, n_fraud: 7, dominant_axis: "account", lead_days: 204 },
+      { cluster_id: 20, ring_score: 0.79, typology_guess: "Rotating Guarantor Pool", n_apps: 7, n_fraud: 6, dominant_axis: "guarantor", lead_days: 195 },
+      { cluster_id: 34, ring_score: 0.74, typology_guess: "Staggered Straw Applications", n_apps: 6, n_fraud: 5, dominant_axis: "burst", lead_days: 178 },
+      { cluster_id: 43, ring_score: 0.71, typology_guess: "Fabricated DSR Booking Ring", n_apps: 6, n_fraud: 5, dominant_axis: "device", lead_days: 165 },
+      { cluster_id: 61, ring_score: 0.65, typology_guess: "Rural Conduit Ring", n_apps: 5, n_fraud: 4, dominant_axis: "account", lead_days: 152 },
+      { cluster_id: 79, ring_score: 0.58, typology_guess: "Guarantor Collusion Cluster", n_apps: 5, n_fraud: 3, dominant_axis: "guarantor", lead_days: 140 },
+    ]
+  };
+}
+
+/* ============================================================= PAGE TABS */
+function showTab(pageId) {
+  document.querySelectorAll(".page-view").forEach(p => p.classList.remove("active"));
+  document.querySelectorAll(".tab-btn").forEach(b => b.setAttribute("data-active", "false"));
+  
+  const targetPage = document.getElementById("view-" + pageId);
+  const targetBtn = document.querySelector(`.tab-btn[data-page="${pageId}"]`);
+  
+  if (targetPage) targetPage.classList.add("active");
+  if (targetBtn) targetBtn.setAttribute("data-active", "true");
+  
+  if (pageId === "causal") {
+    setTimeout(setupCausalGraph, 40);
+  }
+}
+
+let isFitMode = false;
+function toggleSlideFit() {
+  isFitMode = !isFitMode;
+  const wrap = document.querySelector(".main-wrap");
+  if (isFitMode) {
+    wrap.style.maxWidth = "1600px";
+    wrap.style.padding = "14px 18px 24px";
+    alert("Slide Fit Mode: Scaling layout to optimal 16:9 aspect ratio for slide screenshot capture.");
+  } else {
+    wrap.style.maxWidth = "1440px";
+    wrap.style.padding = "20px 24px 60px";
+  }
+}
+
+/* ============================================================= SCREEN 1 LOGIC */
+function changeTimelineDay(val) {
+  const day = parseInt(val, 10);
+  const pct = Math.min(100, Math.max(0, ((day - 1) / 364) * 100));
+  
+  document.getElementById("timelineBarFill").style.width = pct + "%";
+  document.getElementById("timelinePin").style.left = pct + "%";
+  document.getElementById("sliderDayText").textContent = "Day " + day + " of 365";
+}
+
+function initRadarTable() {
+  const tbody = document.getElementById("radarTbody");
+  if (!tbody) return;
+  tbody.innerHTML = "";
+  
+  const rings = DATA.rings.slice(0, 7);
+  rings.forEach((r, idx) => {
+    const lead = r.lead_days || (218 - idx * 11);
+    const tr = document.createElement("tr");
+    tr.onclick = () => showTab("causal");
+    
+    tr.innerHTML = `
+      <td><span class="cluster-tag ${r.ring_score >= 0.70 ? 'red' : 'amber'}">#${r.cluster_id}</span></td>
+      <td><b style="font-family:var(--font-mono);color:${r.ring_score >= 0.7 ? 'var(--alert-red)' : '#974F00'}">${r.ring_score.toFixed(2)}</b></td>
+      <td><b>${r.typology_guess || 'Identity Reuse Syndicate'}</b></td>
+      <td>
+        <div class="mini-bar">
+          <div class="mini-bar-fill" style="width:${Math.round(r.n_apps / 10 * 100)}%;background:${r.ring_score >= 0.7 ? 'var(--alert-red)' : 'var(--tvs-blue)'}"></div>
+        </div>
+        <span style="font-size:11px;color:var(--muted)">${r.n_apps} apps</span>
+      </td>
+      <td><span class="tag-corp green">⚡ +${lead} Days Lead</span></td>
+      <td><span style="font-family:var(--font-mono);font-size:11px">${r.dominant_axis || 'device'}</span></td>
+      <td><button class="btn-corp" style="padding:3px 8px;font-size:11px">Inspect Graph →</button></td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+/* ============================================================= SCREEN 2 LOGIC */
+let actionsState = { account: false, device: false, dealer: false };
+
+function toggleCausalAction(type) {
+  actionsState[type] = !actionsState[type];
+  const alertBox = document.getElementById("causalNotice");
+  
+  if (type === "account") {
+    document.getElementById("btnCutAccount").setAttribute("data-active", actionsState.account);
+    if (actionsState.account) {
+      alertBox.innerHTML = `
+        <div class="notice-box success">
+          <span style="font-size:16px">🛡️</span>
+          <div>
+            <b>CAUSAL COLLAPSE: Bank Account Link Severed (−0.22 AUCPR Drop)</b><br>
+            Disbursement bridge severed. 8 straw applicants cannot transfer cash into the shared mule account. Ring fully collapses before funds leave TVS accounts.
+          </div>
+        </div>
+      `;
+    } else {
+      alertBox.innerHTML = "";
+    }
+  }
+  else if (type === "device") {
+    document.getElementById("btnCutDevice").setAttribute("data-active", actionsState.device);
+    if (actionsState.device) {
+      alertBox.innerHTML = `
+        <div class="notice-box success">
+          <span style="font-size:16px">🛡️</span>
+          <div>
+            <b>DEVICE ISOLATION: Phone Fingerprint Link Severed (−0.21 AUCPR Drop)</b><br>
+            Synthetic device farm isolated. 4 pending loan applications locked for mandatory in-person biometric KYC.
+          </div>
+        </div>
+      `;
+    } else {
+      alertBox.innerHTML = "";
+    }
+  }
+  else if (type === "dealer") {
+    document.getElementById("btnCutDealer").setAttribute("data-active", actionsState.dealer);
+    if (actionsState.dealer) {
+      alertBox.innerHTML = `
+        <div class="notice-box danger-trap">
+          <span style="font-size:18px">⚠️</span>
+          <div>
+            <b>CRITICAL POLICY ERROR: Dealer is an innocent conduit (Audited Dealer NPA = 0.23%)!</b><br>
+            Blocking this showroom only drops fraud signal by <b>−0.10</b> (least impact), but <b>falsely freezes 142 honest rural borrowers</b> and burns <b>₹4.2 Cr in TVS dealer channel volume</b>. The fraud ring simply walks to the next showroom 2 km away!
+          </div>
+        </div>
+      `;
+    } else {
+      alertBox.innerHTML = "";
+    }
+  }
+  
+  drawCausalGraph();
+}
+
+let cNodes = [];
+let cEdges = [];
+
+function setupCausalGraph() {
+  const canvas = document.getElementById("causalCanvas");
+  if (!canvas) return;
+  const rect = canvas.parentElement.getBoundingClientRect();
+  canvas.width = rect.width;
+  canvas.height = rect.height;
+  
+  const cx = canvas.width / 2;
+  const cy = canvas.height / 2;
+  
+  cNodes = [
+    { id: "DLR_3910", type: "dealer", label: "Dealer #3910 (Conduit Showroom)", x: cx - 250, y: cy, r: 22 },
+    { id: "DEV_819", type: "device", label: "Device #819 (IMEI Farm)", x: cx - 60, y: cy - 130, r: 18 },
+    { id: "ACC_4902", type: "account", label: "Shared Mule Account ...4902", x: cx - 60, y: cy + 130, r: 18 },
+    { id: "GRT_551", type: "guarantor", label: "Guarantor #551", x: cx + 180, y: cy - 140, r: 17 },
+    
+    { id: "APP_01", type: "applicant", label: "App #01 (2W ₹85k)", x: cx + 80, y: cy - 60, r: 13 },
+    { id: "APP_02", type: "applicant", label: "App #02 (2W ₹92k)", x: cx + 150, y: cy - 10, r: 13 },
+    { id: "APP_03", type: "applicant", label: "App #03 (3W ₹1.9L)", x: cx + 160, y: cy + 70, r: 13 },
+    { id: "APP_04", type: "applicant", label: "App #04 (CD ₹45k)", x: cx + 80, y: cy + 100, r: 13 },
+    { id: "APP_05", type: "applicant", label: "App #05 (2W ₹78k)", x: cx + 220, y: cy + 20, r: 13 }
+  ];
+  
+  cEdges = [
+    { u: "DLR_3910", v: "APP_01", type: "dealer" },
+    { u: "DLR_3910", v: "APP_02", type: "dealer" },
+    { u: "DLR_3910", v: "APP_03", type: "dealer" },
+    { u: "DLR_3910", v: "APP_04", type: "dealer" },
+    
+    { u: "DEV_819", v: "APP_01", type: "device" },
+    { u: "DEV_819", v: "APP_02", type: "device" },
+    { u: "DEV_819", v: "APP_03", type: "device" },
+    
+    { u: "ACC_4902", v: "APP_02", type: "account" },
+    { u: "ACC_4902", v: "APP_03", type: "account" },
+    { u: "ACC_4902", v: "APP_04", type: "account" },
+    { u: "ACC_4902", v: "APP_05", type: "account" },
+    
+    { u: "GRT_551", v: "APP_01", type: "guarantor" },
+    { u: "GRT_551", v: "APP_05", type: "guarantor" }
+  ];
+  
+  drawCausalGraph();
+}
+
+function drawCausalGraph() {
+  const canvas = document.getElementById("causalCanvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+  // Clean white grid lines for enterprise look
+  ctx.strokeStyle = "#F1F5F9";
+  ctx.lineWidth = 1;
+  for (let x = 0; x < canvas.width; x += 40) {
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+  }
+  for (let y = 0; y < canvas.height; y += 40) {
+    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+  }
+
+  const palette = {
+    dealer: "#42526E",
+    device: "#004C87",
+    account: "#00875A",
+    guarantor: "#6554C0",
+    applicant: "#DE350B"
+  };
+
+  // Draw Edges
+  cEdges.forEach(e => {
+    const u = cNodes.find(n => n.id === e.u);
+    const v = cNodes.find(n => n.id === e.v);
+    if (!u || !v) return;
+    
+    let isCut = false;
+    if (e.type === "account" && actionsState.account) isCut = true;
+    if (e.type === "device" && actionsState.device) isCut = true;
+    if (e.type === "dealer" && actionsState.dealer) isCut = true;
+    
+    ctx.beginPath();
+    ctx.moveTo(u.x, u.y);
+    ctx.lineTo(v.x, v.y);
+    
+    if (isCut) {
+      ctx.setLineDash([4, 4]);
+      ctx.strokeStyle = "rgba(222, 53, 11, 0.4)";
+      ctx.lineWidth = 1.5;
+    } else {
+      ctx.setLineDash([]);
+      ctx.strokeStyle = palette[e.type] || "#C1C7D0";
+      ctx.lineWidth = 2.0;
+    }
+    ctx.stroke();
+    ctx.setLineDash([]);
+  });
+
+  // Draw Nodes
+  cNodes.forEach(n => {
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+    
+    let fill = palette[n.type] || "#004C87";
+    if (n.type === "dealer" && actionsState.dealer) {
+      fill = "#DE350B";
+    }
+    ctx.fillStyle = fill;
+    ctx.fill();
+    
+    ctx.strokeStyle = "#FFFFFF";
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+    
+    // Clean label
+    ctx.font = "600 11px Inter, sans-serif";
+    ctx.fillStyle = "#172B4D";
+    ctx.textAlign = "center";
+    ctx.fillText(n.label, n.x, n.y + n.r + 14);
+  });
+}
+
+/* ============================================================= SCREEN 3 LOGIC */
+function triggerFirebreak(idx) {
+  const row = document.getElementById("rowAction" + idx);
+  const btn = row.querySelector("button");
+  btn.textContent = "✓ Executed & Audited";
+  btn.style.background = "#00875A";
+  btn.style.opacity = "0.85";
+  btn.style.cursor = "default";
+  row.style.background = "#F0FDF4";
+  row.style.borderColor = "#ABF5D1";
+  alert(`Ring-Vaccination Firebreak #${idx} Executed: Underwriter advisory issued. Exposure reduced immediately.`);
+}
+
+/* ============================================================= INITIALIZATION */
+window.addEventListener("DOMContentLoaded", () => {
+  initRadarTable();
+  setupCausalGraph();
+});
+window.addEventListener("resize", () => {
+  if (document.getElementById("view-causal").classList.contains("active")) {
+    setupCausalGraph();
+  }
+});
+</script>
+</body>
+</html>

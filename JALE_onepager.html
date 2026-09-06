@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>JALE — Graph-Native Early Warning for Lending-Fraud Rings | One-Pager</title>
+<style>
+  @page { size: A4 portrait; margin: 8mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Segoe UI", Calibri, Helvetica, Arial, sans-serif;
+    margin: 0; padding: 8mm 9mm; color: #14261f; background: #fff;
+    font-size: 8.4pt; line-height: 1.32;
+  }
+  .hdr { background: #16342a; color: #fff; padding: 7px 12px; border-radius: 3px;
+         display: flex; justify-content: space-between; align-items: center; }
+  .hdr h1 { margin: 0; font-size: 15pt; letter-spacing: .2px; }
+  .hdr .sub { font-size: 7.4pt; color: #bcd8cc; text-align: right; line-height: 1.25; }
+  .band { display: flex; gap: 5px; margin: 6px 0 7px; }
+  .kpi { flex: 1; border: 1px solid #cfdcd6; border-top: 3px solid #16342a;
+         border-radius: 3px; padding: 4px 6px; background: #f7faf8; }
+  .kpi b { display: block; font-size: 12pt; color: #16342a; line-height: 1.1; }
+  .kpi span { font-size: 6.6pt; color: #4a5f57; text-transform: uppercase; letter-spacing: .3px; }
+  .cols { column-count: 2; column-gap: 7mm; column-rule: 1px solid #e2eae6; }
+  section { break-inside: avoid; margin-bottom: 6px; }
+  h2 { font-size: 8.8pt; color: #fff; background: #16342a; margin: 0 0 3px;
+       padding: 2.5px 6px; border-radius: 2px; text-transform: uppercase; letter-spacing: .4px; }
+  h3 { font-size: 8.2pt; margin: 4px 0 2px; color: #0f5c4a; }
+  p { margin: 2px 0; }
+  ul { margin: 2px 0 2px 0; padding-left: 13px; }
+  li { margin-bottom: 1.2px; }
+  table { width: 100%; border-collapse: collapse; font-size: 7.4pt; margin: 3px 0; }
+  th { background: #e6efeb; color: #16342a; text-align: left; padding: 1.8px 4px; border-bottom: 1px solid #b9ccc4; }
+  td { padding: 1.8px 4px; border-bottom: 1px solid #edf2f0; }
+  td.n { text-align: right; font-variant-numeric: tabular-nums; }
+  .hl { background: #fff6d8; font-weight: 600; }
+  .tag { font-size: 6.2pt; background: #d9e7e1; color: #16342a; padding: 0.5px 4px;
+         border-radius: 7px; margin-left: 3px; vertical-align: 1px; letter-spacing:.2px;}
+  .quote { border-left: 3px solid #d9782c; background: #fdf5ee; padding: 3px 6px;
+           font-style: italic; font-size: 8pt; margin: 3px 0; }
+  .win { border-left: 3px solid #0f5c4a; background: #f0f7f4; padding: 3px 6px; margin: 3px 0; }
+  .fail { border-left: 3px solid #b23b2e; background: #fdf1ef; padding: 3px 6px; margin: 3px 0; }
+  .bar { height: 7px; background: #16342a; border-radius: 1px; display: inline-block; vertical-align: middle; }
+  .bar.alt { background: #2f8fa8; } .bar.mut { background: #b7c4bd; } .bar.or { background: #e0785a; }
+  footer { margin-top: 6px; border-top: 1.5px solid #16342a; padding-top: 3px;
+           font-size: 6.6pt; color: #55665f; display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <h1>Ring-Level Early Warning for Lending Fraud — TVS Credit</h1>
+  <div class="sub">JALE Round-2 · One-page evidence brief<br>Sources: [PUBLIC] RBI AR 2025-26 · [COLAB] executed notebook · [SIM] repo experiments · [A#] labelled assumptions</div>
+</div>
+
+<div class="band">
+  <div class="kpi"><b>₹40,774 cr</b><span>Lending fraud FY26 = 85% of all reported fraud</span></div>
+  <div class="kpi"><b>0.754</b><span>Ring-detection AUCPR · 20× lift over 3.77% base</span></div>
+  <div class="kpi"><b>204 days</b><span>Median lead time, 0 false alarms (strict)</span></div>
+  <div class="kpi"><b>₹+39 cr</b><span>Base 5-yr NPV · upside ₹+64 cr · 89% P(NPV&gt;0)</span></div>
+  <div class="kpi"><b>0.23%</b><span>NPA on dealer advances — dealers repay</span></div>
+</div>
+
+<div class="cols">
+
+<section>
+  <h2>1 · The fraud war TVS fights is a lending war <span class="tag">PUBLIC</span></h2>
+  <p>Fraud value is <b>not</b> in payments — it is in advances. Card/internet fraud is a rounding error against the loan book.</p>
+  <table>
+    <tr><th>Channel (RBI AR 2025-26)</th><th>FY26 value</th><th>Share</th></tr>
+    <tr class="hl"><td>Advances (loans)</td><td class="n">₹40,774 cr</td><td class="n">85%</td></tr>
+    <tr><td>Card / internet (digital)</td><td class="n">₹29 cr</td><td class="n">~0.06%</td></tr>
+  </table>
+  <p><b>And each case is getting bigger.</b> Average fraud value per case: FY24 ₹2.17 cr → FY25 ₹3.83 cr → FY26 ₹4.72 cr = <b>+118% severity per case in two years</b>. Rings are consolidating, not multiplying — which is exactly what a graph, not a per-application score, is built to catch.</p>
+</section>
+
+<section>
+  <h2>2 · What we measure — the receipt <span class="tag">COLAB</span></h2>
+  <p>AUCPR, ring-disjoint 5-fold CV, 3.77% base rate. Every model on the <i>same</i> folds and features.</p>
+  <table>
+    <tr><th>Model / feature set</th><th>AUCPR</th><th></th></tr>
+    <tr><td>Single feature (n_guarantors)</td><td class="n">0.233</td><td><span class="bar mut" style="width:23px"></span></td></tr>
+    <tr><td>Node-only GBT</td><td class="n">0.243</td><td><span class="bar mut" style="width:24px"></span></td></tr>
+    <tr><td>Graph features only, GBT</td><td class="n">0.751</td><td><span class="bar alt" style="width:75px"></span></td></tr>
+    <tr class="hl"><td>Node + graph GBT (fixed) — headline</td><td class="n">0.754</td><td><span class="bar" style="width:75px"></span></td></tr>
+    <tr><td>Node + graph GBT (nested CV)</td><td class="n">0.681</td><td><span class="bar" style="width:68px"></span></td></tr>
+    <tr><td>GraphSAGE GNN</td><td class="n">0.688</td><td><span class="bar or" style="width:69px"></span></td></tr>
+    <tr><td>GAT GNN</td><td class="n">0.672</td><td><span class="bar or" style="width:67px"></span></td></tr>
+  </table>
+  <ul>
+    <li>Honest range with nested CV: <b>0.68 – 0.75</b>.</li>
+    <li>Best single column alone 0.233 (6.2×) = our <b>honest floor</b>.</li>
+    <li>Graph features beat GNNs on a sparse lending graph — <b>the features, not the exotic model, carry the signal</b>.</li>
+    <li>Validated on a real public graph (<b>YelpChi, 45,954 nodes</b>): the leakage-gap protocol transfers, measured at +0.022 AUCPR.</li>
+  </ul>
+  <p style="font-size:6.8pt;color:#5a6b64">Evidence: executed notebook §4/§5/§6b · SMOKE, 3,474 apps, 131 fraud.</p>
+</section>
+
+<section>
+  <h2>3 · Why you can trust the number <span class="tag">COLAB + SIM</span></h2>
+  <p><b>Three controls, all passing:</b></p>
+  <ul>
+    <li><b>Shuffled labels</b> → model drops to chance (no memorisation).</li>
+    <li><b>Ring-disjoint CV</b> → test rings never leak into training.</li>
+    <li><b>Nested CV</b> → hyperparameters chosen inside inner folds only.</li>
+  </ul>
+  <p><b>The leakage gap</b> — inflation from a naive random split: synthetic TVS-like graph <b>+10.0%</b> AUCPR; real graph (YelpChi) <b>+2.2%</b>. We report the harder number.</p>
+  <div class="fail"><b>And we tell you where we fail:</b> hold out one typology and AUCPR drops to <b>0.27</b>. We ship that as a built-in <b>novelty detector</b> — a flag for unseen structures — rather than claiming we understand all rings.</div>
+</section>
+
+<section>
+  <h2>4 · Before fraud occurs — measured lead time <span class="tag">SIM</span></h2>
+  <p>Trained only on the past (warm-start on first half of the timeline, watch the second half), the engine flags <b>5 of 9 forming rings before their last application arrives</b>.</p>
+  <table>
+    <tr><th>Setting</th><th>Rings caught</th><th>Analyst load</th><th>Lead</th></tr>
+    <tr class="hl"><td>Strict (L4 ≥ 0.70, cluster ≥ 6)</td><td class="n">5 / 9</td><td class="n">0 false alarms</td><td class="n">204 d (~7 mo)</td></tr>
+    <tr><td>Loose (L4 ≈ 0.65)</td><td class="n">9 / 9</td><td class="n">~5 reviews/wk</td><td class="n">—</td></tr>
+  </table>
+  <p>An honest recall-vs-load trade-off curve, not a magic number: the bank picks the point on the frontier.</p>
+  <div class="quote">This is literally the problem statement: “predict emerging fraud ecosystems <b>before</b> fraud occurs.”</div>
+</section>
+
+<section>
+  <h2>5 · Which connection actually carries the risk? <span class="tag">COLAB</span></h2>
+  <p>Every relationship tested by removing it and measuring the damage (fixed-param node+graph GBT, ring-disjoint, notebook §8a).</p>
+  <table>
+    <tr><th>Relation removed</th><th>Δ AUCPR</th><th></th></tr>
+    <tr class="hl"><td>Bank account</td><td class="n">−0.217</td><td><span class="bar alt" style="width:70px"></span></td></tr>
+    <tr><td>Device</td><td class="n">−0.205</td><td><span class="bar" style="width:66px"></span></td></tr>
+    <tr><td>Dealer</td><td class="n">−0.098</td><td><span class="bar or" style="width:32px"></span></td></tr>
+    <tr><td>Guarantor</td><td class="n">−0.081</td><td><span class="bar mut" style="width:26px"></span></td></tr>
+    <tr><td>Person</td><td class="n">−0.013</td><td><span class="bar mut" style="width:5px"></span></td></tr>
+  </table>
+  <div class="win"><b>The dealer is a conduit, not the cause.</b> Blocking the dealer changes almost nothing about ring detection; blocking the bank-account link collapses it.</div>
+  <p><b>Design consequence:</b> verify the cheap link (account, device); never blanket-block the dealer. This protects genuine rural borrowers.</p>
+</section>
+
+<section>
+  <h2>6 · Ring-vaccination: the cheapest link that breaks the ring <span class="tag">SIM</span></h2>
+  <p><b>Score the cluster, not the person.</b> A ring-level queue with an evidence case-file per cluster, showing the dominant axis: device / account / guarantor / burst.</p>
+  <p><b>Actions are firebreaks — minimal-friction, budget-aware:</b></p>
+  <ul>
+    <li>Step-up: verify one disbursement account</li>
+    <li>Verify the guarantor pool</li>
+    <li>Hold disbursement to one account</li>
+    <li>Dealer audit <i>only</i> when implicated by the ablation</li>
+  </ul>
+  <p>Every action maps to a measured signal drop: account −0.22 · device −0.21 · dealer −0.10 (least signal). Analyst budget → recovery: reviewing the top-k risk clusters recovers ~22% of injected ring applications at k=1 rising to <b>~64% at k=20</b>.</p>
+  <p style="font-size:6.8pt;color:#5a6b64">Repo L4 evaluation: all 12 rings flagged at ≥0.5, 83% of fraud apps covered (doubts.md D14).</p>
+</section>
+
+<section>
+  <h2>7 · The business case — anchored to audited books <span class="tag">PUBLIC + A#</span></h2>
+  <p><b>Year-1 build cost → Year-2 breakeven → Year-3 profit.</b> Audited anchors (AR Note 18, FY26):</p>
+  <ul>
+    <li>Target book: Vehicles ₹12,964 cr + CD ₹6,065 cr = <b>₹19,029 cr</b></li>
+    <li>Target-book NPA ₹404 cr @ <b>2.12%</b>; write-offs ₹437 cr; AUM ₹30,639 cr</li>
+    <li>Dealer advances: 0.23% NPA — dealers repay</li>
+  </ul>
+  <table>
+    <tr><th>Year</th><th>Base net P&amp;L</th><th>Upside</th><th>Driver</th></tr>
+    <tr><td>Y1</td><td class="n">−₹12 cr</td><td class="n">−₹12 cr</td><td>₹13 cr pilot build &amp; training vs ₹1.5 cr savings</td></tr>
+    <tr><td>Y2</td><td class="n">+₹4 cr</td><td class="n">+₹8 cr</td><td>breakeven: ₹11 cr savings vs ₹7.5 cr opex</td></tr>
+    <tr><td>Y3</td><td class="n">+₹18 cr</td><td class="n">+₹26 cr</td><td>full TW + CD rollout, recurring</td></tr>
+    <tr><td>Y4</td><td class="n">+₹28 cr</td><td class="n">+₹41 cr</td><td>extended to tractors + personal loans</td></tr>
+    <tr><td>Y5</td><td class="n">+₹28 cr</td><td class="n">+₹42 cr</td><td>steady state</td></tr>
+  </table>
+  <p class="hl" style="padding:2px 4px">5-year value: <b>Base NPV ₹+39 cr</b> · Upside (growth unlock of throttled segments) <b>₹+64 cr</b> · <b>89% P(NPV&gt;0)</b> (Monte-Carlo 90% CI banded).</p>
+  <p style="font-size:6.8pt;color:#5a6b64">Assumptions, all labelled: ring share 20% [A2], prevention 50% [A3], recovery uplift 10% [A4]. PROPOSAL/financial_model.py.</p>
+</section>
+
+<section>
+  <h2>8 · Rural fairness is a feature, not a caveat <span class="tag">PUBLIC + COLAB</span></h2>
+  <p><b>Creditworthiness ≠ fraud risk.</b> A thin-file honest borrower is not a fraud suspect.</p>
+  <table>
+    <tr><th>Gross NPA, % of exposure (FY26 audited)</th><th>%</th></tr>
+    <tr><td>Agriculture &amp; allied (tractor)</td><td class="n">10.30</td></tr>
+    <tr><td>Services</td><td class="n">6.88</td></tr>
+    <tr><td>Industry – MSME</td><td class="n">3.89</td></tr>
+    <tr><td>Vehicles (2W / used-car / 3W / CV)</td><td class="n">2.64</td></tr>
+    <tr><td>Personal loans</td><td class="n">2.51</td></tr>
+    <tr><td>Industry – other</td><td class="n">1.88</td></tr>
+    <tr><td>Consumer durable</td><td class="n">1.02</td></tr>
+    <tr class="hl"><td>Advance to dealers</td><td class="n">0.23</td></tr>
+  </table>
+  <p><b>Tested three independent ways, same verdict:</b> (1) audited books — dealer advances 0.23% NPA (FY25: 0.37%), dealers repay; (2) our ablation — dealer link carries the <i>least</i> detection signal (−0.10 AUCPR); (3) entity-resolution audit — <b>34 false merges</b> found, which is why we never auto-reject on a link alone.</p>
+  <div class="win"><b>Three tests, one answer: the dealer is the conduit, not the cause.</b></div>
+  <p><b>DPDP 2023:</b> hashed identifiers, no PII in graph edges, purpose-limited. Explainable by construction.</p>
+</section>
+
+</div>
+
+<footer>
+  <span><b>Bottom line:</b> lending fraud is 85% of the loss pool and 118% more severe per case; a graph-feature GBT detects rings at 0.754 AUCPR (honest 0.68–0.75), ~7 months early with zero false alarms, and pays back ₹+39 cr NPV — while leaving dealers and thin-file rural borrowers untouched.</span>
+  <span>JALE Round-2 · 8 slides condensed · every claim source-tagged</span>
+</footer>
+
+</body>
+</html>

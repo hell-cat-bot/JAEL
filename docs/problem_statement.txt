@@ -1,0 +1,140 @@
+===== PAGE 1 =====
+
+
+===== PAGE 2 =====
+IT Case Study
+ Problem Statement – Revolutionising Financial Services: Empowering Rural
+ India with Technology
+ TVS Credit – Empowering India. One Indian at a Time
+From the largest cities to the smallest villages, India is filled with ambition and enterprise. As Indians
+from all walks of life set out to write their growth stories, our timely and affordable credit empowers
+them to bring their dreams alive. With a rich legacy as a part of the TVS Group, we empower Indians
+from various socio-economic backgrounds with financial products that serve their needs. In doing
+so, we further the cause of financial inclusion.
+Our Two Wheeler, Used Car, Three Wheeler, and Tractor Loans are designed for Indians in small
+towns and the rural heartland, for our nation's growth is powered by their prosperity. Building on this
+commitment, our expansion into Used Construction Equipment Loans, Gold Loans, and
+E-commerce Financing enables us to cater to the evolving financial needs of urban customers and
+empower financial inclusion across cities and emerging economic hubs.
+foundation. We have been ranked #87 among India’s Top 100 Best Companies to Work For in
+2026 by Great Place To Work®, and have received several prestigious recognitions, including the
+Best BFSI Brands 2026 award from The Economic Times; being featured among India’s Leading
+BFSI and FinTech Companies 2026 by Dun & Bradstreet; the Best Data Quality Award – Silver
+Category in the Emerging Segment NBFCs at the TransUnion Annual Conference 2026; a Silver
+award for our Republic Day campaign at the prestigious MOMMY Awards 2026; and multiple
+awards at the RMAI Flame Awards 2026 – South East Asia Edition.
+Product Portfolio
+TVS Credit’s offerings have expanded to include the following products:
+ • Two Wheeler Loans
+• Personal Loans
+• Used Car Loans
+• Ecom Loans
+• Tractor Loans (New and Used)
+• Gold Loans
+• Three Wheeler Loans
+• Co-Branded Credit Cards
+• Used Commercial Vehicle Loans
+• Loan Against Property
+• Consumer Durable Loans
+• Business Loans
+• Mobile Loans
+• Used Construction Equipment Loans
+TVS Credit is committed to addressing the diverse financial requirements of rural areas, recognizing
+the challenges faced by customers in Tier 3 and Tier 4 towns, particularly those with limited or no
+credit history. TVS Credit has embraced technology-driven solutions to streamline the loan process
+and deliver a flawless customer experience. This strategic approach enables us to eliminate
+barriers, enhance accessibility and effectively address the burgeoning financial requirements of
+With over 26 million+ customers and a long-term rating of CRISIL AA+, our growth is built on a firm
+
+===== PAGE 3 =====
+the Indian populace amidst the rapidly evolving financial landscape.
+By proactively adapting to emerging trends and leveraging technology-driven solutions, we are
+well positioned to meet the ever-changing demands of our valued customers. The company has
+already implemented digital processes and technological solutions, incorporating the latest
+available internal and external data. This includes utilising mobile applications, analytics models,
+third-party APIs, Bureau Scores, Digital Twins, Chatbots, Voice bots, WhatsApp, and SMS bots for
+various aspects of loan processing, such as lead generation, customer onboarding, risk evaluation,
+underwriting, loan disbursement, repayment management/ collections, repossessions/write offs,
+customer service, and cross-selling. TVS Credit recognises that there is always room for
+improvement, so we want you to delve into the realm of exceptionally creative and
+technology-enabled solutions.
+Problem Statement
+You can select any one of the process areas below, bringing in disruption to the existing status quo:
+ a
+Predictive AI/ML Early-Warning Signals for Collections
+Using machine learning models on a Loan Management System (LMS) to track
+state/region-wise macro-economic factors, localized weather shifts, past EMI payment
+timelines to predict default risk.
+ b
+Decoding Machine-Generated Trust
+Develop an AI-powered solution capable of distinguishing humans from machines by
+detecting synthetic identities, cloned voices, deepfake customers, AI-generated voice calls,
+automated loan applications, and AI-powered impersonation attacks, enabling financial
+institutions to prevent next-generation fraud before it occurs.
+ c
+AI-Powered Smart Lending Decision Hub
+Development of an integrated AI-driven lending platform that combines AI-based lending
+for agriculture based customers using satellite data, weather, crop and geo-location
+insights, AI credit scoring, fraud detection, loan recommendation engine, default prediction,
+GenAI loan assistant, real-time risk dashboards, and early-warning mechanisms for
+defaulters.
+ d
+Alternative Data Credit Engine for the Invisible Customer
+Develop an AI-powered alternative credit scoring engine leveraging GST data, UPI
+transaction trends, telecom recharge patterns, utility bill payments, e-commerce activity,
+and mobility and vehicle usage patterns to generate explainable risk scores for first-time
+borrowers, gig workers, small merchants, and informal sector workers.
+ e
+Swarm Intelligence Lending Network
+Create an AI-driven collective intelligence platform that continuously learns and identifies
+hidden relationships across loan applications, device fingerprints, dealer networks, bank
+accounts, mobile numbers, locations, guarantors, and payment behaviours to predict
+emerging fraud ecosystems before fraud occurs.
+
+
+===== PAGE 4 =====
+f
+AI-Powered Financial Resilience Score
+Develop an AI-based scoring framework that evaluates a customer's financial stability and
+repayment capability under adverse economic conditions using transaction behaviour,
+income stability, employment history, EMI repayment patterns, alternative financial
+indicators, and economic shock simulations to generate risk classifications, explainable
+scorecards, early-warning indicators, and personalized lending recommendations.
+ g
+Intelligent Merchant & Product Risk Engine
+The rapid growth of e-commerce financing introduces new risks for lenders. Product return
+fraud, merchant service issues, fake transactions, and sudden shifts in consumer buying
+behavior is common and can significantly impact portfolio performance and profitability.
+Identifying these risks early is critical for sustainable lending.
+Develop an AI-powered merchant and product risk monitoring platform that continuously
+analyses product performance, return and cancellation rates, fulfilment quality, customer
+feedback, regional anomalies, seasonal trends, transaction behaviour, and suspicious
+activities to provide real-time risk dashboards, merchant risk scoring, fraud detection, risk
+alerts, and actionable recommendations for proactive risk mitigation.
+• The company is seeking innovative solutions from forward-thinking individuals to enhance the
+loan application and management process at TVS Credit, making it exceptionally user friendly
+and customer centric.
+• Teams are encouraged to leverage state-of-the-art technologies such as open APIs, data
+integration, mobile/responsive web applications, and advancements in AI/ML/Blockchain to
+create innovative solution(s).
+• The objective is to empower every customer to effortlessly access loans and effectively handle
+their financial matters through the integration of cutting-edge technology and streamlined
+procedures.
+Deliverables
+Round 2
+Teams to propose a solution(s) and showcase the problems they will be addressing through their
+proposed solutions. Present your solution through a framework/proof of concept through PPT, it can
+include explanation of your solution with a Prototype/Screens/Wireframe (if required).
+Note: This may require visiting a two-wheeler / used car / consumer durable retailer and
+understanding the current loan process (can be TVS Credit or the competition) and define the
+innovative and radical way of changing the status quo
+Round 3 (Finale Round)
+Teams will be selected based on their submissions in Round 2. In Round 3, the teams will have to
+develop and present a working/live demo of the proposed. solution, address the functional aspects
+of your solution and perform a code walkthrough to showcase the unique aspects of your solution.
+
+
+===== PAGE 5 =====
+Submissions will be reviewed for plagiarism and AI-generated content. Original work, relevant
+research and critical thinking will be given greater weightage.
+ For any queries on the IT Challenge Case Study, please write to us at epic@tvscredit.com

@@ -1,0 +1,26 @@
+# JA-LE V1 — pinned environment.
+#
+# These are the exact versions the committed reports/ numbers were regenerated
+# against on 2026-08-29. The pipeline's headline figures (HistGradientBoosting
+# fits) are sensitive to the scikit-learn tree/RNG implementation, so an
+# unpinned install will not reproduce reports/v1_SMOKE.json exactly.
+#
+#   python -m venv .venv && . .venv/bin/activate   (or .venv\Scripts\activate)
+#   pip install -r requirements.txt
+#   python scripts/run_v1.py --profile SMOKE
+#
+# Colab / GNN extras (torch, torch_geometric) are intentionally NOT pinned here;
+# install them in the notebook where a matching CUDA build is available.
+
+numpy==2.5.0
+pandas==3.0.2
+scipy==1.17.1
+scikit-learn==1.8.0
+pyarrow==25.0.1
+
+# Visualisation / demo-data export (not needed for the core pipeline)
+matplotlib==3.10.9
+networkx==3.2.1
+# Proposal/deck generation (not needed for the core pipeline)
+python-pptx==1.0.2
+pypdf==5.1.0
