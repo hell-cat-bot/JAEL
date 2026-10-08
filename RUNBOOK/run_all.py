@@ -34,7 +34,7 @@ def main():
     """)
 
     # Step 1: Audit Note 18, RBI macro data, and financial formulas
-    run_step(1, "Audit TVS Audited Note 18 Math & RBI Macro Fraud Surge", f"{sys.executable} verify_audited_numbers.py")
+    run_step(1, "Audit TVS Audited Note 18 Math & RBI Macro Fraud Surge", f"{sys.executable} scripts/verify_audited_numbers.py")
 
     # Step 2: Full pipeline execution (Features, graphs, models, JSON audit files)
     run_step(2, "Full Pipeline Execution (Ring-Disjoint GBT, Leakage Gap, Shuffled Control)", f"{sys.executable} scripts/run_v1.py --profile SMOKE")
@@ -43,16 +43,16 @@ def main():
     run_step(3, "Regenerate All Presentation Charts", f"{sys.executable} PROPOSAL/make_charts.py")
 
     # Step 4: Rebuild and verify slide artefacts
-    run_step(4, "Rebuild and Verify Slide 1 & Slide 2 Artefacts", f"{sys.executable} make_slide1.py")
-    run_step(5, "Rebuild and Verify Slide 2 Artefacts", f"{sys.executable} make_slide2.py")
+    run_step(4, "Rebuild and Verify Slide 1 & Slide 2 Artefacts", f"{sys.executable} PROPOSAL/make_slide1.py")
+    run_step(5, "Rebuild and Verify Slide 2 Artefacts", f"{sys.executable} PROPOSAL/make_slide2.py")
 
     print("\n" + "=" * 75)
     print("  >>> ALL PIPELINE ARTEFACTS & AUDITED NUMBERS REGENERATED IN < 45 SECONDS <<<")
     print("=" * 75)
 
     # Launch slides & interactive demo in browser
-    slide1 = (ROOT / "slide1_proposal.html").resolve().as_uri()
-    slide2 = (ROOT / "slide2_proposal.html").resolve().as_uri()
+    slide1 = (ROOT / "PROPOSAL" / "slide1_proposal.html").resolve().as_uri()
+    slide2 = (ROOT / "PROPOSAL" / "slide2_proposal.html").resolve().as_uri()
     demo = (ROOT / "demo" / "jale_demo.html").resolve().as_uri()
 
     print(f"\nLaunching Proposal Slides & Interactive Demo in your default browser...")

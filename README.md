@@ -56,13 +56,13 @@ any number in it.
 
 | Path | What it is |
 |---|---|
-| `PROPOSAL/` | Round-2 deck builder + slide spec + chart pack + financial model |
+| `PROPOSAL/` | Round-2 deck (PPTX builder, slide spec, chart pack, financial model) + slide HTML sources, one-pager & poster |
 | `experiments/` | The receipts: lead-time backtest, typology generalisation, ER-in-path, nested CV |
 | `research/` | Evidence ledger (claim → source → confidence), case card |
 | `colab/` | Executed notebook: GNNs on same folds, YelpChi/real-data protocol, ablations, leakage audits |
 | `jale/` | The pipeline (generator · entity resolution · graph · features · models) |
 | `demo/` | `jale_demo.html` — the analyst queue (ring-level scoring, evidence, cold start) |
-| `docs/` | `doubts.md` — a running log of what we don't know, with verdicts |
+| `docs/` | `doubts.md` — a running log of what we don't know, with verdicts; plus `metrics-explained.md`, the problem statement and a technical brief |
 
 ## Why this is not "the usual graph + GNN deck"
 
