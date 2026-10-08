@@ -10,7 +10,8 @@ import sys
 import json
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 
 def audit_tvs_books():
     print("\n[1/4] AUDITING TVS CREDIT FY26 AUDITED NOTE 18...")

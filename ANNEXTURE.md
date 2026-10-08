@@ -149,9 +149,9 @@ python scripts/run_v1.py --profile SMOKE
 python PROPOSAL/make_charts.py
 
 # 4 · Rebuild slide artefacts
-python make_slide1.py
-python make_slide2.py
+python PROPOSAL/make_slide1.py
+python PROPOSAL/make_slide2.py
 
 # 5 · Audit Note 18 & RBI macro numbers independently
-python verify_audited_numbers.py
+python scripts/verify_audited_numbers.py
 ```

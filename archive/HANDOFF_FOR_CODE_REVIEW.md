@@ -40,7 +40,7 @@ Reviewing this code without knowing what has been executed will mislead you. Be 
 | Fold logic for public data | `jale/data/public_datasets.py::ring_disjoint_folds_from_adjacency` | **Executed** on a synthetic cluster graph; cluster-disjoint invariant verified |
 | **PyTorch/PyG models** | `jale/models/torch_gnn.py` | **NEVER EXECUTED.** `py_compile` only. Syntax is valid; runtime behaviour, tensor shapes and PyG API compatibility are **entirely unverified**. |
 | **Public dataset loaders** | `jale/data/public_datasets.py` (loaders) | **NEVER EXECUTED.** Schemas written from papers/dataset cards, not by inspecting files. |
-| **Colab notebook** | `colab/JALE_Colab_Training.ipynb` | **NEVER RUN.** All 31 cells, 18 of them code, `compile()` — which proves nothing about execution. |
+| **Colab notebook** | `colab/JALE_Colab_Training_ran.ipynb` | **Executed on Colab** (GPU); outputs are committed in the notebook. |
 | Cross-typology generalisation | `experiments/typology_generalisation.py` | **Executed.** Mean held-out AUC-PR 0.273. See §6. |
 | LR anomaly diagnosis | `experiments/diag_lr_anomaly.py` | **Executed.** Anomaly resolved; see §7. |
 | Sweep + nested CV | `experiments/sweep_graph_model.py`, `experiments/nested_cv.py` | **Executed.** Reproduced inside `scripts/run_v1.py --nested`. |
@@ -264,4 +264,4 @@ python scripts/run_v1.py --profile SMOKE     # ~18 s, writes reports/v1_SMOKE.js
 
 Expected: the four model rows and three audit results in §5, exactly. Any material difference means the environment changed — investigate before trusting anything downstream.
 
-Colab: upload `colab/JALE_Colab_Training.ipynb` plus a zip of the project, then run top to bottom. Expect to fix `torch_gnn.py` on the first pass.
+Colab: open `colab/JALE_Colab_Training_ran.ipynb` (the executed notebook) with the project uploaded alongside, then run top to bottom. Expect to fix `torch_gnn.py` on the first pass.

@@ -1,1 +1,21 @@
-__pycache__/`n*.pyc`n.venv/`ndata/jale_smoke/`ndata/jale_colab/`nreports/_tmp/`n*.zip
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Generated data (rebuilt by scripts/run_v1.py / jale.data.generator)
+data/jale_smoke/
+data/jale_colab/
+
+# Generated intermediates
+reports/_tmp/
+
+# Archives / review bundles
+*.zip
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
